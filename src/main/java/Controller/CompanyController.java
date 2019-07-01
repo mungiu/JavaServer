@@ -11,7 +11,8 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 
 public class CompanyController implements ICompanyController {
-
+/*sdfsf*/
+	
     private static String DB_NAME;
     private Connection connection;
 
