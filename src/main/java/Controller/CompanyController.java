@@ -47,6 +47,8 @@ public class CompanyController implements ICompanyController {
 
         return company;
     }
+    
+    
 
 //-------------------------------------------Register a Company---------------------//
     public void registerCompany(Company company) throws SQLException {
@@ -98,6 +100,7 @@ public class CompanyController implements ICompanyController {
     }
 
  //------------------------------------------editCompany---------------------//
+    
     public void editCompany(Company company) {
 
     }
