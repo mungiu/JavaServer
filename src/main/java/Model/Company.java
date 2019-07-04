@@ -3,6 +3,12 @@ package Model;
 import java.util.ArrayList;
 
 public class Company {
+
+    private String companyID;
+    private String Name;
+    private int phone;
+    private String email;
+
     public String getCompanyID() {
         return companyID;
     }
@@ -34,11 +40,6 @@ public class Company {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private String companyID;
-    private String Name;
-    private int phone;
-    private String email;
 
     public LocationList getLocationList() {
         return locationList;

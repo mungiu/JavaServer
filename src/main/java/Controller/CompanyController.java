@@ -56,10 +56,8 @@ public class CompanyController implements ICompanyController {
     	Statement statement = connection.createStatement();
         
     try {    
-    	
-    
+ 
         ResultSet resultSet = statement.executeQuery("insert into \"" + DB_NAME + "\".company (CompanyID, Name, Phone, Email) values (?,?,?,?)");
-      
         resultSet.updateString(1, company.getCompanyID());
         resultSet.updateString(2, company.getName());
         resultSet.updateInt(3, company.getPhone());

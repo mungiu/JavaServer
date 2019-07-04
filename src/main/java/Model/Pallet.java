@@ -3,6 +3,12 @@ package Model;
 import java.sql.Date;
 
 public class Pallet {
+	
+	private double PalletHeight;
+    private double PalletArea;
+    private Date ArrivalDate;
+    private int daysStored;
+    
     private String palletID;
 
     public String getPalletID() {
@@ -45,8 +51,5 @@ public class Pallet {
         this.daysStored = daysStored;
     }
 
-    private double PalletHeight;
-    private double PalletArea;
-    private Date ArrivalDate;
-    private int daysStored;
+    
 }

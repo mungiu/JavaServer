@@ -7,12 +7,14 @@ import Model.PalletList;
 import Utils.Database;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PalletController implements IPalletController {
-    private static String DB_NAME;
+    private static String palletID = null;
+	private static String DB_NAME;
     private Connection connection;
 
     public PalletController(Connection dbConnection){
@@ -65,20 +67,32 @@ public class PalletController implements IPalletController {
         return pallet;
     }
     
-    public Pallet populateRemovePallet(ResultSet resultSet) throws SQLException {
-        Pallet pallet = new Pallet();
-        Location location = new Location();
-    	Company com = new Company();
-        resultSet.setString(1, palletID);
+    public void populateRemovePallet(ResultSet resultSet) throws SQLException {
+               resultSet.updateString(1, palletID);
+    }
 
 
     @Override
-    public void StorePallet(Pallet pallet, String locationID) {
+    public void StorePallet(Pallet pallet, String companyID, String locationID) {
 
     }
 
     @Override
-    public PalletList getPalletList() {
-        return null;
-    }
-}
+    public PalletList  getPalletList() {
+    	PalletList palletList = new PalletList();
+        Statement statement = connection.createStatement();
+    	ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + DB_NAME + "\".Pallet where PalletID = '"+ palletID +"';");
+    				
+    				while (resultSet.next())
+    		        {
+    		            palletList.add(populatePalletList(resultSet));
+    		        }
+    				return palletList;
+    				
+    					}
+    public void populatePalletList(ResultSet resultSet) throws SQLException {
+    
+        ((PreparedStatement) resultSet).setString(1, palletID);
+    			}
+    
+        }
