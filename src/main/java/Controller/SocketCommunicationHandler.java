@@ -45,8 +45,8 @@ public class SocketCommunicationHandler implements Runnable {
             JSONObject jsonObject = new JSONObject(json);
             System.out.println(json);
             request = new SocketRequest(
-                    jsonObject.getEnum(SocketRequest.ACTION.class, "action"),
-                    jsonObject.get("obj").equals(null)  ? null : jsonObject.getJSONObject("obj")
+                    jsonObject.getEnum(SocketRequest.ACTION.class, "Action"),
+                    jsonObject.get("Obj").equals(null)  ? null : jsonObject.getJSONObject("Obj")
             );
             System.out.println(request.getObj());
         } catch (IOException e) {

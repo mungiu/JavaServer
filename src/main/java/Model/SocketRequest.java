@@ -1,8 +1,8 @@
 package Model;
 
-import org.json.JSONObject;
+import java.io.Serializable;
 
-public class SocketRequest {
+public class SocketRequest implements Serializable {
 
     private ACTION action;
     private Object obj;
