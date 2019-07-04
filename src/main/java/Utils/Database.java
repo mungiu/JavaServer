@@ -6,12 +6,12 @@ import java.sql.DriverManager;
 public class Database {
     private static Connection connection;
 
-    public static final String DB_NAME = "WME";
+    private static int dbPort = 5433;
+    public static final String DB_NAME = "postgres";
     private static String dbAddress = "localhost";
-    private static int dbPort = 5432;
     private static String dbUsername = "postgres";
-    private static String dbPassword = "930yuqiang";
-    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + "/" + DB_NAME;
+    private static String dbPassword = "1111";
+    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
 
     /**
      * Lazy implementation of the database connection

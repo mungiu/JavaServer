@@ -9,14 +9,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class UnitTest {
-    public static final String DB_NAME = "WME";
+    private static int dbPort = 5433;
+    private static final String DB_NAME = "postgres";
     private static String dbAddress = "localhost";
-    private static int dbPort = 5432;
     private static String dbUsername = "postgres";
-    private static String dbPassword = "930yuqiang";
-    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + "/" + DB_NAME;
-    private static String url = "jdbc:postgresql://localhost/WME";
-    CompanyController cc = new CompanyController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
+    private static String dbPassword = "1111";
+    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
+
+    private CompanyController cc = new CompanyController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
 
     public UnitTest() throws SQLException {
 
@@ -44,6 +44,6 @@ public class UnitTest {
         c.setName("test");
         c.setPhone(0000000);
         cc.registerCompany(c);
-        Assert.assertEquals(c.getCompanyID(),cc.getCompanyByID("test"));
+        Assert.assertEquals(c.getCompanyID(),cc.getCompanyByID("test").getCompanyID());
     }
 }
