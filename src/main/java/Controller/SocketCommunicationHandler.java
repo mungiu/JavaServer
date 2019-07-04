@@ -64,7 +64,7 @@ public class SocketCommunicationHandler implements Runnable {
 						e.printStackTrace();
 					}
                     send(SUCCESS);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -114,7 +114,7 @@ public class SocketCommunicationHandler implements Runnable {
                     Company company = iCompanyController.getCompanyByID(request.getCompanyID());
                     String response = new ObjectMapper().writeValueAsString(company);
                     send(response);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
