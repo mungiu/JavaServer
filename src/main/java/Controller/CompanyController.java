@@ -3,11 +3,11 @@ package Controller;
 import Model.Company;
 import Model.CompanyList;
 import Utils.Database;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 
 public class CompanyController implements ICompanyController {
 /*sdfsf*/
@@ -23,15 +23,25 @@ public class CompanyController implements ICompanyController {
     
   //-------------------------------------------getCompanyID---------------------//
     
-    public Company getCompanyByID(String companyID) {
+    public Company getCompanyByID(String companyID) throws SQLException{
     	
     	   Company company = new Company();  
            Statement statement = connection.createStatement();
-           ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + DB_NAME + "\".company where CompanyID = ?");
+           //database statement ??
+           String sqlStatement = "SELECT * FROM \"" + DB_NAME + "\".company where CompanyID = ?";
+           ResultSet resultSet = statement.executeQuery(sqlStatement);
 
            while (resultSet.next())
            {
-               company.getCompanyID().add(populatCompanyID(resultSet));
+               String cid = resultSet.getString("companyid");
+               String name = resultSet.getString("name");
+               int phone = resultSet.getInt("phone");
+               String email = resultSet.getString("email");
+               company.setPhone(phone);
+               company.setName(name);
+               company.setEmail(email);
+               company.setCompanyID(cid);
+       //        company.getCompanyID().add(populatCompanyID(resultSet));
            }
 
            return company;
@@ -54,8 +64,7 @@ public class CompanyController implements ICompanyController {
     public void registerCompany(Company company) throws SQLException {
     	
     	Statement statement = connection.createStatement();
-        
-    try {    
+
     	
     
         ResultSet resultSet = statement.executeQuery("insert into \"" + DB_NAME + "\".company (CompanyID, Name, Phone, Email) values (?,?,?,?)");
@@ -65,8 +74,6 @@ public class CompanyController implements ICompanyController {
         resultSet.updateInt(3, company.getPhone());
         resultSet.updateString(4, company.getEmail());
 
-        return;
-    }
     }
  
 
