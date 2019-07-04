@@ -2,7 +2,6 @@ package Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Database {
     private static Connection connection;
@@ -11,8 +10,8 @@ public class Database {
     private static String dbAddress = "localhost";
     private static int dbPort = 5432;
     private static String dbUsername = "postgres";
-    private static String dbPassword = "Jwan0090j";
-    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + "/" + dbPort + "/"+ DB_NAME;
+    private static String dbPassword = "930yuqiang";
+    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + "/" + DB_NAME;
 
     /**
      * Lazy implementation of the database connection
