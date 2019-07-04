@@ -27,7 +27,7 @@ public class CompanyController implements ICompanyController {
     	
     	   Company company = new Company();  
            Statement statement = connection.createStatement();
-           ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + DB_NAME + "\".company where CompanyID = ?");
+           ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + DB_NAME + "\".company where CompanyID = '"+ companyID +"';");
 
            while (resultSet.next())
            {
@@ -72,6 +72,7 @@ public class CompanyController implements ICompanyController {
 
  
   //-------------------------------------------getCompanyList---------------------//
+    
     public CompanyList getCompanyList() throws SQLException {
         CompanyList companyList = new CompanyList();
         Statement statement = connection.createStatement();

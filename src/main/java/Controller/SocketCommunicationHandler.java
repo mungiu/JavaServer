@@ -57,7 +57,12 @@ public class SocketCommunicationHandler implements Runnable {
             case REGISTER_COMPANY:
                 try {
                     Company company = new ObjectMapper().readValue(request.getObj().toString(), Company.class);
-                    iCompanyController.registerCompany(company);
+                    try {
+						iCompanyController.registerCompany(company);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                     send(SUCCESS);
                 } catch (IOException e) {
                     e.printStackTrace();
