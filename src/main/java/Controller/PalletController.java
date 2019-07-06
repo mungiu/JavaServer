@@ -23,7 +23,7 @@ public class PalletController implements IPalletController {
     }
     
     @Override
-    public Pallet getPalletByID(String palletID, String companyID, String LocationID) {
+    public Pallet getPalletByID(String palletID) throws SQLException {
     	Pallet pallet = new Pallet();  
     	
         Statement statement = connection.createStatement();
@@ -31,7 +31,7 @@ public class PalletController implements IPalletController {
 
         while (resultSet.next())
         {
-            pallet.getPalletID().add(populatePallet(resultSet));
+            pallet = populatePallet(resultSet);
         }
 
         return pallet;
@@ -39,11 +39,11 @@ public class PalletController implements IPalletController {
 
     public Pallet populatePallet(ResultSet resultSet) throws SQLException {
         Pallet pallet = new Pallet();
-        Location location = new Location();
-    	Company com = new Company();
+        Company com = new Company();
+        Location loc = new Location();
         pallet.setPalletID(resultSet.getString(1));
         com.setCompanyID(resultSet.getString(2));
-        location.setLocationID(resultSet.getString(3));
+        loc.setLocationID(resultSet.getString(3));
         pallet.setPalletHeight(resultSet.getDouble(4));
         pallet.setPalletArea(resultSet.getDouble(5));
         pallet.setArrivalDate(resultSet.getDate(6));
@@ -53,39 +53,45 @@ public class PalletController implements IPalletController {
      
 
     @Override
-    public void removePallet(String palletID, String companyID, String LocationID) {
-       
-    	Pallet pallet = new Pallet();  
+    public void removePallet(String palletID) throws SQLException {
     	Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("delete FROM \"" + DB_NAME + "\".Pallet where PalletID = '"+ palletID +"';");
-
-        while (resultSet.next())
-        {
-            pallet.getPalletID().add(populatePallet(resultSet));
-        }
-
-        return pallet;
+        ResultSet resultSet = statement.executeQuery("delete FROM \"" + DB_NAME + "\".Pallet where PalletID = '"+ palletID +"';");      
+                resultSet.updateString(1, palletID);
+                
+                
     }
+
+
+    @Override
+    public void StorePallet(Pallet pallet, Company companyID, Location location) throws SQLException {
+    	Pallet pall = new Pallet();
+    	Company com = new Company();
+    	Statement statement= connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("insert into \"" + DB_NAME + "\".Pallet (PalletID, CompanyID, LocationID, PalletHeight, PalletArea, ArrivaleDate)"
+        		                                                                + "  values  (?,?,?,?,?,?)");
+        
     
-    public void populateRemovePallet(ResultSet resultSet) throws SQLException {
-               resultSet.updateString(1, palletID);
-    }
-
-
-    @Override
-    public void StorePallet(Pallet pallet, String companyID, String locationID) {
 
     }
 
     @Override
-    public PalletList  getPalletList() {
+    public PalletList  getPalletList() throws SQLException {
+    	Pallet pallet = new Pallet();
+    	Company com = new Company();
+    	Location loc = new Location();
     	PalletList palletList = new PalletList();
         Statement statement = connection.createStatement();
-    	ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + DB_NAME + "\".Pallet where PalletID = '"+ palletID +"';");
+        ResultSet resultSet = statement.executeQuery("select * FROM \"" + DB_NAME + "\".Pallet;");
     				
     				while (resultSet.next())
     		        {
-    		            palletList.add(populatePalletList(resultSet));
+    		        pallet.setPalletID(resultSet.getString(1));
+    		        com.setCompanyID(resultSet.getString(2));
+    		        loc.setLocationID(resultSet.getString(3));
+    		        pallet.setPalletHeight(resultSet.getDouble(4));
+    		        pallet.setPalletArea(resultSet.getDouble(5));
+    		        pallet.setArrivalDate(resultSet.getDate(6));
+    		        
     		        }
     				return palletList;
     				
