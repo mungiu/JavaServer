@@ -68,7 +68,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case   ASSIGN_LOCATION_TO_COMPANY:
                 try {
-                    iLocationController.assignLocationToCompany(request.getLocationID(),request.getCompanyID());
+                    iLocationController.assignLocationToCompany(request.getLocationID(),request.getCompanyID(), request.getRentalEndDate());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();

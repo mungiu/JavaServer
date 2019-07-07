@@ -38,6 +38,8 @@ public class UnitTest {
 
     @Test
     public void RegisterCompanyTest() throws SQLException{
+        cc.removeCompany("test");
+
         Company c = new Company();
         c.setCompanyID("test");
         c.setEmail("test");

@@ -113,4 +113,11 @@ public class CompanyController implements ICompanyController {
         statement.executeUpdate();
         statement.close();
     }
+
+    @Override
+    public void removeCompany(String companyID) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".company where companyid ="+"'"+companyID+"'");
+        statement.executeUpdate();
+        statement.close();
+    }
 }
