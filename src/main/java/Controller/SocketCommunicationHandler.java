@@ -21,6 +21,8 @@ public class SocketCommunicationHandler implements Runnable {
     private SocketRequest request;
     private final String SUCCESS = "success";
 
+    // it instantiates the socket communication handler
+
     public SocketCommunicationHandler(Socket socket) {
         this.socket = socket;
         this.iCompanyController = new CompanyController(Database.getConnection());
@@ -117,7 +119,7 @@ public class SocketCommunicationHandler implements Runnable {
             case STORE_PALLET:
                 try {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
-                    iPalletController.StorePallet(pallet,request.getLocationID());
+                    iPalletController.StorePallet(pallet, request.getCompanyID(),request.getLocationID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
