@@ -68,7 +68,7 @@ public class SocketCommunicationHandler implements Runnable {
                 try {
                     iLocationController.assignLocationToCompany(request.getLocationID(),request.getCompanyID());
                     send(SUCCESS);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -77,7 +77,7 @@ public class SocketCommunicationHandler implements Runnable {
                 try {
                     iLocationController.removeLocationFromCurrentCompany(request.getLocationID(),request.getCompanyID());
                     send(SUCCESS);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -87,7 +87,7 @@ public class SocketCommunicationHandler implements Runnable {
                     Company company = new ObjectMapper().readValue(request.getObj().toString(), Company.class);
                     iCompanyController.editCompany(company);
                     send(SUCCESS);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -119,7 +119,7 @@ public class SocketCommunicationHandler implements Runnable {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
                     iPalletController.StorePallet(pallet,request.getLocationID());
                     send(SUCCESS);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -128,7 +128,7 @@ public class SocketCommunicationHandler implements Runnable {
                 try {
                     iPalletController.removePallet(request.getPalletID(), request.getLocationID());
                     send(SUCCESS);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -138,7 +138,7 @@ public class SocketCommunicationHandler implements Runnable {
                     Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getCompanyID());
                     String response = new ObjectMapper().writeValueAsString(pallet);
                     send(response);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -149,7 +149,7 @@ public class SocketCommunicationHandler implements Runnable {
                     System.out.println(palletList.toString());
                     String response = new ObjectMapper().writeValueAsString(palletList);
                     send(response);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -160,7 +160,7 @@ public class SocketCommunicationHandler implements Runnable {
                     System.out.println(locationList.toString());
                     String response = new ObjectMapper().writeValueAsString(locationList);
                     send(response);
-                } catch (IOException e) {
+                } catch (IOException | SQLException e) {
                     e.printStackTrace();
                 }
                 break;
