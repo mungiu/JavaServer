@@ -29,32 +29,16 @@ public class CompanyController implements ICompanyController {
 
            while (resultSet.next())
            {
-               company = populatCompanyID(resultSet);
+               company = populatCompany(resultSet);
            }
 
            return company;
        }
-
-
-       // it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
-
-    private Company populatCompanyID(ResultSet resultSet) throws  SQLException
-    {
-        Company company = new Company();
-
-        company.setCompanyID(resultSet.getString(1));
-        company.setName(resultSet.getString(2));
-        company.setPhone(resultSet.getInt(3));
-        company.setEmail((resultSet.getString(4)));
-
-        return company;
-    }
     
     
     // this method to register a new company in the application database
 
     public void registerCompany(Company company) throws SQLException {
-    	
     	PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
         statement.setString(1, company.getCompanyID());
         statement.setString(2, company.getName());

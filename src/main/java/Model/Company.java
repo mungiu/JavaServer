@@ -1,6 +1,11 @@
 package Model;
 
 public class Company {
+    private String companyID;
+    private String name;
+    private int phone;
+    private String email;
+    private LocationList locationList = new LocationList();
 
     // it returns the value of the private companyID variable.
 
@@ -50,11 +55,6 @@ public class Company {
         this.email = email;
     }
 
-    private String companyID;
-    private String name;
-    private int phone;
-    private String email;
-
 
     //  it returns a list of values for the available locations
 
@@ -62,5 +62,4 @@ public class Company {
         return locationList;
     }
 
-    private LocationList locationList = new LocationList();
 }
