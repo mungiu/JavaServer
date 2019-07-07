@@ -33,7 +33,8 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
         statement.setString(1, companyID);
         statement.setString(2, locationID);
         statement.setInt(3, Calendar.DATE);
-        statement.setString(4, company.getEmail());
+//        statement.setString(4, company.getEmail());
+
         statement.executeUpdate();
         statement = connection.prepareStatement("delete from \"" + schemaName + "\".location where locationid = "+"'"+locationID+"'");
         statement.executeUpdate();
@@ -41,8 +42,8 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
     }
 
     @Override
-    public void removeLocationFromCurrentCompany(String locationID, String companyID) throws SQLException{
-        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where companyid ="+"'"+companyID+"'" + " and locationid = "+"'"+locationID+"'");
+    public void removeLocationFromCurrentCompany(String locationID) throws SQLException{
+        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = "+"'"+locationID+"'");
         statement.executeUpdate();
         statement = connection.prepareStatement("insert into \"" + schemaName + "\".location (locationid) values (?)");
         statement.setString(1, locationID);
