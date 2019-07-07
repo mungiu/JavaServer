@@ -1,8 +1,10 @@
 package Model;
 
+
 import java.io.Serializable;
 
 public class SocketRequest implements Serializable {
+
 
     private ACTION action;
     private Object obj;
@@ -10,9 +12,12 @@ public class SocketRequest implements Serializable {
     private String companyID;
     private String palletID;
 
-    public SocketRequest(ACTION action, Object obj, String locationID){
-        this.locationID= locationID;
+    // it instantiates the socket request with three parameters one action, one object and one string.
+
+    public SocketRequest(ACTION action, Object obj, String locationID){ this.locationID= locationID;
     }
+
+    // it request one specific action(access) to be handled on one specific object.
 
     public SocketRequest(ACTION action, String ID){
         if(action.equals(ACTION.GET_COMPANY_BYID))
@@ -23,6 +28,8 @@ public class SocketRequest implements Serializable {
             this.locationID = ID;
     }
 
+    // it request one specific action(access) to be handled on two specific objects.
+
     public SocketRequest(ACTION action, String ID1, String ID2) {
         if(action.equals(ACTION.ASSIGN_LOCATION_TO_COMPANY) || action.equals(ACTION.REMOVE_LOCATION_FROM_CURRENT_COMPANY)){
             this.locationID = ID1;
@@ -32,15 +39,23 @@ public class SocketRequest implements Serializable {
             this.palletID=ID1;
             this.locationID=ID2;}
     }
+
+
+    // another constructor that instantiates the socket request with two parameters of String return Type.
+
     public SocketRequest(String palletID, String companyID) {
 
     }
+
+    // third constructor that instantiates the socket request with two parameters action and object returning types.
+
 
     public SocketRequest(ACTION action, Object obj) {
         this.action = action;
         this.obj = obj;
     }
 
+ // the class action which has a list of specific actions to be handled on specific objects
 
     public enum ACTION
     {
