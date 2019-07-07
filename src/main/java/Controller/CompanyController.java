@@ -25,6 +25,7 @@ public class CompanyController implements ICompanyController {
            Statement statement = connection.createStatement();
 
            //database statement ??
+
            String sqlStatement = "SELECT * FROM \"" + schemaName + "\".company where CompanyID = " + "'" + companyID + "'";
            ResultSet resultSet = statement.executeQuery(sqlStatement);
 
@@ -104,7 +105,13 @@ public class CompanyController implements ICompanyController {
 
  //------------------------------------------editCompany---------------------//
     
-    public void editCompany(Company company) {
-
+    public void editCompany(Company company) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("update \"" + schemaName + "\".company set (companyID, name, phone, email) values (?,?,?,?)");
+        statement.setString(1, company.getCompanyID());
+        statement.setString(2, company.getName());
+        statement.setInt(3, company.getPhone());
+        statement.setString(4, company.getEmail());
+        statement.executeUpdate();
+        statement.close();
     }
 }
