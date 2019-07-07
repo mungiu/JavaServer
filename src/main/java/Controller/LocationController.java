@@ -5,7 +5,6 @@ import Model.LocationList;
 import Utils.Database;
 
 import java.sql.*;
-import java.util.Calendar;
 
 public class LocationController implements ILocationController {
 
@@ -28,12 +27,12 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
     return location;
 }
     @Override
-    public void assignLocationToCompany(String locationID, String companyID) throws SQLException{
+    public void assignLocationToCompany(String locationID, String companyID, String rentalStart, String rentalEnd) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".rentedlocation (companyID, locationid, rentalstart, rentalend) values (?,?,?,?)");
         statement.setString(1, companyID);
         statement.setString(2, locationID);
-        statement.setInt(3, Calendar.DATE);
-        statement.setString(4, company.getEmail());
+        statement.setString(3, rentalStart);
+        statement.setString(4, rentalEnd);
         statement.executeUpdate();
         statement = connection.prepareStatement("delete from \"" + schemaName + "\".location where locationid = "+"'"+locationID+"'");
         statement.executeUpdate();
