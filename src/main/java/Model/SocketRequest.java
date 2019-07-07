@@ -1,6 +1,10 @@
 package Model;
 
-public class SocketRequest {
+
+import java.io.Serializable;
+
+public class SocketRequest implements Serializable {
+
 
     private ACTION action;
     private Object obj;
