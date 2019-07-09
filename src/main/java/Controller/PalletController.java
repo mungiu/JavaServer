@@ -11,11 +11,15 @@ public class PalletController implements IPalletController {
     private Connection connection;
     private String schemaName;
 
+    // it instantiates the pallet Controller with a private instance of the database and connection to the database.
+
     public PalletController(Connection dbConnection){
         this.connection = dbConnection;
         this.DB_NAME = Database.DB_NAME;
         this.schemaName = "WME";
     }
+
+    // it is used by other methods to populate the temporary pallet table in the database with the resulted pallets from these methods.
 
     public Pallet populatePallet(ResultSet resultSet) throws SQLException {
         Pallet pallet = new Pallet();
@@ -26,6 +30,9 @@ public class PalletController implements IPalletController {
         pallet.setDaysStored(resultSet.getInt(5));
         return  pallet;
     }
+
+    // it returns a specific pallet details when the pallet id and company id are requested.
+
     @Override
     public Pallet getPalletByID(String palletID, String companyID)throws SQLException {
         Pallet p = new Pallet();
@@ -41,12 +48,16 @@ public class PalletController implements IPalletController {
         return p;
     }
 
+    // it removes the assigned pallet for a specific company
+
     @Override
     public void removePallet(String palletID, String companyID) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".pallet where palletid ="+"'"+palletID+"'" + " and companyid = "+"'"+companyID+"'");
         statement.executeUpdate();
         statement.close();
     }
+
+    // it assign a specific pallet for the renting company in a specific location.
 
     @Override
     public void StorePallet(Pallet pallet, String locationID, String companyID) throws SQLException {
@@ -60,6 +71,8 @@ public class PalletController implements IPalletController {
         statement.executeUpdate();
         statement.close();
     }
+
+    // it returns the list of pallets that are assigned in the application database.
 
     @Override
     public PalletList getPalletList() throws SQLException {

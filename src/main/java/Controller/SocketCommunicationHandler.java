@@ -21,6 +21,8 @@ public class SocketCommunicationHandler implements Runnable {
     private SocketRequest request;
     private final String SUCCESS = "success";
 
+    // it instantiates the socket communication handler
+
     public SocketCommunicationHandler(Socket socket) {
         this.socket = socket;
         this.iCompanyController = new CompanyController(Database.getConnection());
@@ -45,8 +47,8 @@ public class SocketCommunicationHandler implements Runnable {
             JSONObject jsonObject = new JSONObject(json);
             System.out.println(json);
             request = new SocketRequest(
-                    jsonObject.getEnum(SocketRequest.ACTION.class, "action"),
-                    jsonObject.get("obj").equals(null)  ? null : jsonObject.getJSONObject("obj")
+                    jsonObject.getEnum(SocketRequest.ACTION.class, "Action"),
+                    jsonObject.get("Obj").equals(null)  ? null : jsonObject.getJSONObject("Obj")
             );
             System.out.println(request.getObj());
         } catch (IOException e) {
