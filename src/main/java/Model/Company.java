@@ -2,7 +2,14 @@ package Model;
 
 public class Company {
 
+<<<<<<< HEAD
+    private String companyID;
+    private String Name;
+    private int phone;
+    private String email;
+=======
     // it returns the value of the private companyID variable.
+>>>>>>> master
 
     public String getCompanyID() {
         return companyID;
@@ -50,6 +57,8 @@ public class Company {
         this.email = email;
     }
 
+<<<<<<< HEAD
+=======
     private String companyID;
     private String name;
     private int phone;
@@ -58,6 +67,7 @@ public class Company {
 
     //  it returns a list of values for the available locations
 
+>>>>>>> master
     public LocationList getLocationList() {
         return locationList;
     }

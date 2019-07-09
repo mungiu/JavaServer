@@ -59,7 +59,12 @@ public class SocketCommunicationHandler implements Runnable {
             case REGISTER_COMPANY:
                 try {
                     Company company = new ObjectMapper().readValue(request.getObj().toString(), Company.class);
-                    iCompanyController.registerCompany(company);
+                    try {
+						iCompanyController.registerCompany(company);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -119,7 +124,11 @@ public class SocketCommunicationHandler implements Runnable {
             case STORE_PALLET:
                 try {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
+<<<<<<< HEAD
+                    iPalletController.StorePallet(pallet, request.getCompanyID(), request.getLocationID());
+=======
                     iPalletController.StorePallet(pallet,request.getLocationID(),request.getCompanyID());
+>>>>>>> master
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -128,7 +137,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_PALLET:
                 try {
-                    iPalletController.removePallet(request.getPalletID(), request.getLocationID());
+                    iPalletController.removePallet(request.getPalletID(),request.getLocationID(), request.getLocationID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -137,7 +146,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case GET_PALLET_BYID:
                 try {
-                    Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getCompanyID());
+                    Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getLocationID(), request.getLocationID());
                     String response = new ObjectMapper().writeValueAsString(pallet);
                     send(response);
                 } catch (IOException | SQLException e) {
