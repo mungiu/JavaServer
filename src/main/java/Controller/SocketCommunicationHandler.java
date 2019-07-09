@@ -126,11 +126,9 @@ public class SocketCommunicationHandler implements Runnable {
             case STORE_PALLET:
                 try {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
-<<<<<<< HEAD
-                    iPalletController.StorePallet(pallet, request.getCompanyID(), request.getLocationID());
-=======
+
                     iPalletController.StorePallet(pallet,request.getLocationID(),request.getCompanyID());
->>>>>>> master
+
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
