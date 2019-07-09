@@ -4,9 +4,9 @@ import java.sql.Date;
 
 public class Pallet {
 	
-	private double PalletHeight;
-    private double PalletArea;
-    private Date ArrivalDate;
+	private double palletHeight;
+    private double palletArea;
+    private Date arrivalDate;
     private int daysStored;
     
     private String palletID;
@@ -71,12 +71,4 @@ public class Pallet {
         this.daysStored = daysStored;
     }
 
-<<<<<<< HEAD
-    
-=======
-    private double palletHeight;
-    private double palletArea;
-    private Date arrivalDate;
-    private int daysStored;
->>>>>>> master
 }

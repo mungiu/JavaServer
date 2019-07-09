@@ -66,7 +66,7 @@ public class SocketCommunicationHandler implements Runnable {
 						e.printStackTrace();
 					}
                     send(SUCCESS);
-                } catch (IOException | SQLException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
@@ -124,11 +124,7 @@ public class SocketCommunicationHandler implements Runnable {
             case STORE_PALLET:
                 try {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
-<<<<<<< HEAD
                     iPalletController.StorePallet(pallet, request.getCompanyID(), request.getLocationID());
-=======
-                    iPalletController.StorePallet(pallet,request.getLocationID(),request.getCompanyID());
->>>>>>> master
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -137,7 +133,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_PALLET:
                 try {
-                    iPalletController.removePallet(request.getPalletID(),request.getLocationID(), request.getLocationID());
+                    iPalletController.removePallet(request.getPalletID(), request.getCompanyID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();

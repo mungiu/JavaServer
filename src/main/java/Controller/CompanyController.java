@@ -77,15 +77,10 @@ public class CompanyController implements ICompanyController {
 
     }
 
-<<<<<<< HEAD
- 
-  //-------------------------------------------getCompanyList---------------------//
-    
-=======
+
 
     // this method returns a list of the registered companies in the application database
 
->>>>>>> master
     public CompanyList getCompanyList() throws SQLException {
         CompanyList companyList = new CompanyList();
         Statement statement = connection.createStatement();
