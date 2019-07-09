@@ -1,7 +1,5 @@
 package Model;
 
-import org.json.JSONObject;
-
 public class SocketRequest {
 
     private ACTION action;
@@ -55,7 +53,8 @@ public class SocketRequest {
         GET_PALLET_BYID,
         GET_PALLET_LIST,
         GET_AVAILABLE_LOCATIONS,
-        GET_LOCATION_BYID
+        GET_LOCATION_BYID,
+        GET_LOCATIONS_OF_CURRENT_COMPANY
     }
     public String getLocationID() {
         return locationID;
