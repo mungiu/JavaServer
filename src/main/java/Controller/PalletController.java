@@ -15,12 +15,16 @@ public class PalletController implements IPalletController {
     private Connection connection;
     private String schemaName;
 
+    // it instantiates the pallet Controller with a private instance of the database and connection to the database.
+
     public PalletController(Connection dbConnection){
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
     
 
+
+    // it is used by other methods to populate the temporary pallet table in the database with the resulted pallets from these methods.
 
     public Pallet populatePallet(ResultSet resultSet) throws SQLException {
         Pallet pallet = new Pallet();
@@ -35,7 +39,12 @@ public class PalletController implements IPalletController {
         pallet.setDaysStored(resultSet.getInt(7));
         return  pallet;
     }
+<<<<<<< HEAD
         
+=======
+
+    // it returns a specific pallet details when the pallet id and company id are requested.
+>>>>>>> master
 
     @Override
     public Pallet getPalletByID(String palletID, String companyID, String locationID)throws SQLException {
@@ -53,12 +62,23 @@ public class PalletController implements IPalletController {
 
     }
 
+<<<<<<< HEAD
     public void removePallet(String palletID, String companyID, String locationID) throws SQLException{
+=======
+    // it removes the assigned pallet for a specific company
+
+    @Override
+    public void removePallet(String palletID, String companyID) throws SQLException{
+>>>>>>> master
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".pallet where palletid ="+"'"+palletID+"'" + " and companyid = "+"'"+companyID+"'");
         statement.executeUpdate();
         statement.close();
     }
 
+<<<<<<< HEAD
+=======
+    // it assign a specific pallet for the renting company in a specific location.
+>>>>>>> master
 
     @Override
     public void StorePallet(Pallet pallet, String companyID , String locationID) throws SQLException {
@@ -73,8 +93,14 @@ public class PalletController implements IPalletController {
         statement.close();
     }
 
+<<<<<<< HEAD
 
 
+=======
+    // it returns the list of pallets that are assigned in the application database.
+
+    @Override
+>>>>>>> master
     public PalletList getPalletList() throws SQLException {
 
         PalletList palletList = new PalletList();

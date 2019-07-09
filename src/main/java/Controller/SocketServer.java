@@ -8,6 +8,9 @@ public class SocketServer {
     private final int PORT = 4400;
     private ServerSocket serverSocket;
 
+
+    // it instantiates the socket server object.
+
     public SocketServer() throws IOException {
         serverSocket = new ServerSocket(PORT);
     }

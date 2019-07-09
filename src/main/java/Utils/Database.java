@@ -14,7 +14,7 @@ public class Database {
     private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
 
     /**
-     * Lazy implementation of the database connection
+     * Lazy instantiation of the database connection
      *
      * @return connection
      */

@@ -21,6 +21,8 @@ public class SocketCommunicationHandler implements Runnable {
     private SocketRequest request;
     private final String SUCCESS = "success";
 
+    // it instantiates the socket communication handler
+
     public SocketCommunicationHandler(Socket socket) {
         this.socket = socket;
         this.iCompanyController = new CompanyController(Database.getConnection());
@@ -45,8 +47,8 @@ public class SocketCommunicationHandler implements Runnable {
             JSONObject jsonObject = new JSONObject(json);
             System.out.println(json);
             request = new SocketRequest(
-                    jsonObject.getEnum(SocketRequest.ACTION.class, "action"),
-                    jsonObject.get("obj").equals(null)  ? null : jsonObject.getJSONObject("obj")
+                    jsonObject.getEnum(SocketRequest.ACTION.class, "Action"),
+                    jsonObject.get("Obj").equals(null)  ? null : jsonObject.getJSONObject("Obj")
             );
             System.out.println(request.getObj());
         } catch (IOException e) {
@@ -80,7 +82,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_LOCATION_FROM_CURRENT_COMPANY:
                 try {
-                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID(),request.getCompanyID());
+                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -122,7 +124,11 @@ public class SocketCommunicationHandler implements Runnable {
             case STORE_PALLET:
                 try {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
+<<<<<<< HEAD
                     iPalletController.StorePallet(pallet, request.getCompanyID(), request.getLocationID());
+=======
+                    iPalletController.StorePallet(pallet,request.getLocationID(),request.getCompanyID());
+>>>>>>> master
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
