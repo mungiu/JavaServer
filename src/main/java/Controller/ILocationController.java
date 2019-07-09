@@ -11,4 +11,5 @@ public interface ILocationController {
     void removeLocationFromCurrentCompany(String locationID) throws SQLException;
     Location getLocationByID(String locationID) throws SQLException;
     LocationList getAvailableLocations() throws SQLException;
+    LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException;
 }

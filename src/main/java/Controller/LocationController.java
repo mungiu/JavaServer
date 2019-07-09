@@ -92,4 +92,18 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
 
         return locationList;
     }
+
+    @Override
+    public LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException{
+        LocationList locationList = new LocationList();
+        Statement statement = connection.createStatement();
+        //↓database query
+        String sqlStatement = "";
+        ResultSet resultSet = statement.executeQuery(sqlStatement);
+
+        while(resultSet.next()) {
+            locationList.getLocations().add(populateLocation(resultSet));
+        }
+        return locationList;
+    }
 }

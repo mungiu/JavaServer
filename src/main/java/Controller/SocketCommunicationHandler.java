@@ -2,7 +2,9 @@ package Controller;
 
 import Model.*;
 import Utils.Database;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.xml.internal.ws.client.SenderException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -124,7 +126,7 @@ public class SocketCommunicationHandler implements Runnable {
             case STORE_PALLET:
                 try {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
-                    iPalletController.StorePallet(pallet, request.getCompanyID(), request.getLocationID());
+                    iPalletController.StorePallet(pallet,request.getLocationID(),request.getCompanyID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -133,7 +135,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_PALLET:
                 try {
-                    iPalletController.removePallet(request.getPalletID(), request.getCompanyID());
+                    iPalletController.removePallet(request.getPalletID(),request.getLocationID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -171,6 +173,17 @@ public class SocketCommunicationHandler implements Runnable {
                     e.printStackTrace();
                 }
                 break;
+
+            case GET_LOCATIONS_OF_CURRENT_COMPANY:
+                try{
+                    LocationList locationList = iLocationController.getLocationsOfCurrentCompany(request.getCompanyID());
+                    System.out.println(locationList.toString());
+                    String response = new ObjectMapper().writeValueAsString(locationList);
+                    send(response);
+
+                }catch(SQLException | IOException e){
+                    e.printStackTrace();
+                }
         }
     }
 
