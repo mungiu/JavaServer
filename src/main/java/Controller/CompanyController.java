@@ -6,10 +6,11 @@ import Model.CompanyList;
 import java.sql.*;
 
 public class CompanyController implements ICompanyController {
-/*sdfsf*/
 	
     private String schemaName;
     private Connection connection;
+
+    // it instantiates the company controller with a private instance from the database and connection to the database.
 
     public CompanyController(Connection dbConnection){
         this.connection = dbConnection;
@@ -17,12 +18,15 @@ public class CompanyController implements ICompanyController {
     }
 
     
-  //-------------------------------------------getCompanyID---------------------//
+      // it returns a specific company details when a specific company id is requested
     
     public Company getCompanyByID(String companyID) throws SQLException{
     	
     	   Company company = new Company();  
            Statement statement = connection.createStatement();
+
+           //database statement ??
+
            String sqlStatement = "SELECT * FROM \"" + schemaName + "\".company where CompanyID = " + "'" + companyID + "'";
            ResultSet resultSet = statement.executeQuery(sqlStatement);
 
@@ -33,6 +37,10 @@ public class CompanyController implements ICompanyController {
 
            return company;
        }
+
+
+       // it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
+
     private Company populatCompanyID(ResultSet resultSet) throws  SQLException
     {
         Company company = new Company();
@@ -46,10 +54,11 @@ public class CompanyController implements ICompanyController {
     }
     
     
+    // this method to register a new company in the application database
 
-//-------------------------------------------Register a Company---------------------//
     public void registerCompany(Company company) throws SQLException {
     	
+
     	PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
         statement.setString(1, company.getCompanyID());
         statement.setString(2, company.getName());
@@ -65,11 +74,18 @@ public class CompanyController implements ICompanyController {
 //        resultSet.updateInt(3, company.getPhone());
 //        resultSet.updateString(4, company.getEmail());
 
-    }
- 
 
+    }
+
+<<<<<<< HEAD
  
   //-------------------------------------------getCompanyList---------------------//
+    
+=======
+
+    // this method returns a list of the registered companies in the application database
+
+>>>>>>> master
     public CompanyList getCompanyList() throws SQLException {
         CompanyList companyList = new CompanyList();
         Statement statement = connection.createStatement();
@@ -83,7 +99,7 @@ public class CompanyController implements ICompanyController {
         return companyList;
     }
     
-    
+    // what is the difference between this method and populate company id. need to be checked.........
     
     private Company populatCompany(ResultSet resultSet) throws  SQLException
     {
@@ -97,7 +113,7 @@ public class CompanyController implements ICompanyController {
         return tempCompany;
     }
 
- //------------------------------------------editCompany---------------------//
+    // this method is used when editing company details in the application database
     
     public void editCompany(Company company) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("update \"" + schemaName + "\".company set (companyID, name, phone, email) values (?,?,?,?)");
