@@ -63,6 +63,7 @@ public class SocketRequest implements Serializable {
         ASSIGN_LOCATION_TO_COMPANY,
         REMOVE_LOCATION_FROM_CURRENT_COMPANY,
         EDIT_COMPANY,
+        EDIT_PALLET,
         GET_COMPANY_LIST,
         GET_COMPANY_BYID,
         STORE_PALLET,
