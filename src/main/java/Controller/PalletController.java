@@ -26,6 +26,8 @@ public class PalletController implements IPalletController {
 
     // it is used by other methods to populate the temporary pallet table in the database with the resulted pallets from these methods.
 
+    // it is used by other methods to populate the temporary pallet table in the database with the resulted pallets from these methods.
+
     public Pallet populatePallet(ResultSet resultSet) throws SQLException {
         Pallet pallet = new Pallet();
         Company com = new Company();
@@ -40,8 +42,8 @@ public class PalletController implements IPalletController {
         return  pallet;
     }
 
-
     // it returns a specific pallet details when the pallet id and company id are requested.
+
     @Override
     public Pallet getPalletByID(String palletID, String companyID, String locationID)throws SQLException {
         Pallet p = new Pallet();
@@ -58,15 +60,13 @@ public class PalletController implements IPalletController {
 
     }
 
-
     // it removes the assigned pallet for a specific company
     @Override
-    public void removePallet(String palletID, String companyID) throws SQLException{
+    public void removePallet(String palletID, String companyID) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".pallet where palletid ="+"'"+palletID+"'" + " and companyid = "+"'"+companyID+"'");
         statement.executeUpdate();
         statement.close();
     }
-
 
     // it assign a specific pallet for the renting company in a specific location.
     @Override
@@ -82,8 +82,8 @@ public class PalletController implements IPalletController {
         statement.close();
     }
 
-
     // it returns the list of pallets that are assigned in the application database.
+
     @Override
     public PalletList getPalletList() throws SQLException {
 
