@@ -38,14 +38,13 @@ public class PalletController implements IPalletController {
         pallet.setPalletHeight(resultSet.getDouble(4));
         pallet.setPalletArea(resultSet.getDouble(5));
         pallet.setArrivalDate(resultSet.getDate(6));
-        pallet.setDaysStored(resultSet.getInt(7));
         return  pallet;
     }
 
     // it returns a specific pallet details when the pallet id and company id are requested.
 
     @Override
-    public Pallet getPalletByID(String palletID, String companyID, String locationID)throws SQLException {
+    public Pallet getPalletByID(String palletID, String companyID)throws SQLException {
         Pallet p = new Pallet();
         Statement statement = connection.createStatement();
         String sqlStatement = "SELECT * FROM \"" + schemaName + "\".pallet where palletID = " + "'" + palletID + "' and companyid = '"+companyID+"'";

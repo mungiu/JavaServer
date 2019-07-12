@@ -10,4 +10,5 @@ public interface ICompanyController {
     void registerCompany(Company company) throws SQLException;
     CompanyList getCompanyList() throws SQLException;
     void editCompany(Company company) throws SQLException;
+    void removeCompany(String companyID) throws SQLException;
 }
