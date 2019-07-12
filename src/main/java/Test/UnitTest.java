@@ -13,19 +13,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class UnitTest {
-    public static final String DB_NAME = "WME";
-    private static String dbAddress = "localhost";
     private static int dbPort = 5432;
+    private static final String DB_NAME = "postgres";
+    private static String dbAddress = "localhost";
     private static String dbUsername = "postgres";
-    private static String dbPassword = "930yuqiang";
-    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + "/" + DB_NAME;
-
-//    private static int dbPort = 5432;
-//    private static final String DB_NAME = "postgres";
-//    private static String dbAddress = "localhost";
-//    private static String dbUsername = "postgres";
-//    private static String dbPassword = "1111";
-//    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
+    private static String dbPassword = "1111";
+    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
 
     private CompanyController companyController;
     private LocationController locationController;
