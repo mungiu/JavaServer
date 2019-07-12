@@ -8,4 +8,6 @@ public class PalletList {
     }
 
     private ArrayList<Pallet> palletArrayList = new ArrayList<Pallet>();
+
+    public  int size() {return palletArrayList.size();}
 }

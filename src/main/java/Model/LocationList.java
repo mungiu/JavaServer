@@ -8,4 +8,6 @@ public class LocationList {
     }
 
     private ArrayList<Location> Locations = new ArrayList<Location>();
+
+    public int size() {return Locations.size();}
 }
