@@ -62,6 +62,11 @@ public class UnitTest {
 
     @Test
     public void GetCompanyByIDTest() throws SQLException {
+        Company c = new Company();
+        c.setCompanyID("com1234");
+        c.setEmail("comA.com");
+        c.setName("comAAA");
+        c.setPhone(1111111);
         Assert.assertEquals(c.getName(),cc.getCompanyByID("com1234").getName());
         Assert.assertEquals(c.getEmail(),cc.getCompanyByID("com1234").getEmail());
         Assert.assertEquals(c.getCompanyID(),cc.getCompanyByID("com1234").getCompanyID());
@@ -127,4 +132,17 @@ public class UnitTest {
         p1.setPalletID("pal234");
         Assert.assertEquals(pl.size(), pc.getPalletList().size();
     }
+    
+    @Test
+    public void getCompanyListTest() throws SQLException{
+        Company c = new Company();
+        c.setCompanyID("test");
+        c.setEmail("test");
+        c.setName("test");
+        c.setPhone(0000000);
+        cc.registerCompany(c);
+        Assert.assertEquals(c.getCompanyID(),cc.getCompanyByID("test").getCompanyID());
+    }
+    
+    
 }

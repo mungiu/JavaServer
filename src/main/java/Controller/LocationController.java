@@ -35,13 +35,13 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
 // it assigns a specific location for a specific company in the application database.
 
     @Override
-    public void assignLocationToCompany(String locationID, String companyID, String rentalStart, String rentalEnd) throws SQLException{
+    public void assignLocationToCompany(String locationID, String companyID, Date rentalStart, Date rentalEnd) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".rentedlocation (companyID, locationid, rentalstart, rentalend) values (?,?,?,?)");
         Company company = new Company();
         statement.setString(1, companyID);
         statement.setString(2, locationID);
-        statement.setString(3, rentalStart);
-        statement.setString(4, rentalEnd);
+        statement.setDate(3, rentalStart);
+        statement.setDate(4, rentalEnd);
         statement.executeUpdate();
         statement = connection.prepareStatement("delete from \"" + schemaName + "\".location where locationid = "+"'"+locationID+"'");
         statement.executeUpdate();
@@ -51,8 +51,8 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
     // it removes an assigned location for a specific company.
 
     @Override
-    public void removeLocationFromCurrentCompany(String locationID, String companyID) throws SQLException{
-        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where companyid ="+"'"+companyID+"'" + " and locationid = "+"'"+locationID+"'");
+    public void removeLocationFromCurrentCompany(String locationID) throws SQLException{
+        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = "+"'"+locationID+"'");
         statement.executeUpdate();
         statement = connection.prepareStatement("insert into \"" + schemaName + "\".location (locationid) values (?)");
         statement.setString(1, locationID);
@@ -90,6 +90,20 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
             locationList.getLocations().add(populateLocation(resultSet));
         }
 
+        return locationList;
+    }
+
+    @Override
+    public LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException{
+        LocationList locationList = new LocationList();
+        Statement statement = connection.createStatement();
+        //↓database query
+        String sqlStatement = "";
+        ResultSet resultSet = statement.executeQuery(sqlStatement);
+
+        while(resultSet.next()) {
+            locationList.getLocations().add(populateLocation(resultSet));
+        }
         return locationList;
     }
 }

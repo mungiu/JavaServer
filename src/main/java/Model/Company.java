@@ -2,7 +2,13 @@ package Model;
 
 public class Company {
 
+    private String companyID;
+    private String name;
+    private int phone;
+    private String email;
+
     // it returns the value of the private companyID variable.
+
 
     public String getCompanyID() {
         return companyID;
@@ -49,14 +55,6 @@ public class Company {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private String companyID;
-    private String name;
-    private int phone;
-    private String email;
-
-
-    //  it returns a list of values for the available locations
 
     public LocationList getLocationList() {
         return locationList;
