@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class UnitTest {
-    private static int dbPort = 5432;
+    private static int dbPort = 5433;
     private static final String DB_NAME = "postgres";
     private static String dbAddress = "localhost";
     private static String dbUsername = "postgres";
