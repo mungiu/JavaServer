@@ -3,12 +3,9 @@ package Model;
 import java.sql.Date;
 
 public class Location {
-	 private Date rentalStart;
-	 private Date rentalEnd;
-	 private PalletList palletList = new PalletList();
-	    
     private String locationID;
-
+    private Date rentalStart;
+    private Date rentalEnd;
     // it returns the value of the private locationID variable.
 
     public String getLocationID() {
@@ -45,9 +42,4 @@ public class Location {
         this.rentalEnd = rentalEnd;
     }
 
-    // it returns the list of values for the rented pallets
-
-    public PalletList getPalletList() {
-        return palletList;
-    }
 }

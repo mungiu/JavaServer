@@ -84,7 +84,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_LOCATION_FROM_CURRENT_COMPANY:
                 try {
-                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID());
+                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID(),request.getCompanyID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -144,7 +144,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case GET_PALLET_BYID:
                 try {
-                    Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getLocationID(), request.getLocationID());
+                    Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getLocationID());
                     String response = new ObjectMapper().writeValueAsString(pallet);
                     send(response);
                 } catch (IOException | SQLException e) {

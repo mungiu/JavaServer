@@ -32,11 +32,26 @@ public class CompanyController implements ICompanyController {
 
            while (resultSet.next())
            {
-               company = populatCompany(resultSet);
+               company = populateCompany(resultSet);
            }
 
            return company;
        }
+
+
+       // it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
+
+    private Company populateCompany(ResultSet resultSet) throws  SQLException
+    {
+        Company company = new Company();
+
+        company.setCompanyID(resultSet.getString(1));
+        company.setName(resultSet.getString(2));
+        company.setPhone(resultSet.getInt(3));
+        company.setEmail((resultSet.getString(4)));
+
+        return company;
+    }
     
     
     // this method to register a new company in the application database
@@ -51,13 +66,6 @@ public class CompanyController implements ICompanyController {
         statement.setString(4, company.getEmail());
     	statement.executeUpdate();
     	statement.close();
-    
-//        ResultSet resultSet = statement.executeQuery("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
-      
-//        resultSet.updateString(1, company.getCompanyID());
-//        resultSet.updateString(2, company.getName());
-//        resultSet.updateInt(3, company.getPhone());
-//        resultSet.updateString(4, company.getEmail());
 
 
     }
@@ -73,24 +81,10 @@ public class CompanyController implements ICompanyController {
 
         while (resultSet.next())
         {
-            companyList.getCompanies().add(populatCompany(resultSet));
+            companyList.getCompanies().add(populateCompany(resultSet));
         }
 
         return companyList;
-    }
-    
-    // what is the difference between this method and populate company id. need to be checked.........
-    
-    private Company populatCompany(ResultSet resultSet) throws  SQLException
-    {
-        Company tempCompany = new Company();
-
-        tempCompany.setCompanyID(resultSet.getString(1));
-        tempCompany.setName(resultSet.getString(2));
-        tempCompany.setPhone(resultSet.getInt(3));
-        tempCompany.setEmail((resultSet.getString(4)));
-
-        return tempCompany;
     }
 
     // this method is used when editing company details in the application database
@@ -105,9 +99,8 @@ public class CompanyController implements ICompanyController {
         statement.close();
     }
 
-    @Override
-    public void removeCompany(String companyID) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".company where companyid ="+"'"+companyID+"'");
+    public void removeCompany(String companyID) throws SQLException{
+        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".company where companyid = '"+companyID+"'");
         statement.executeUpdate();
         statement.close();
     }
