@@ -26,29 +26,17 @@ public class UnitTest {
     private Location location;
     private LocationList allLocationsList;
     private LocationList rentedLocationsList;
-    private Company company;
+    private Company company = new Company();
     private CompanyList companyList;
     private Pallet pallet;
     private PalletList palletList;
 
     @Before
     public void setUp() throws Exception {
-        location = new Location();
-        location.setLocationID("loc1234");
-        location.setRentalStart(Date.valueOf("2019-01-01"));
-        location.setRentalEnd(Date.valueOf("2019-11-30"));
-        company = new Company();
-        company.setCompanyID("com1234");
-        company.setEmail("comA.com");
-        company.setName("comAAA");
-        company.setPhone(1111111);
-        pallet = new Pallet();
-        pallet.setPalletID("pal123");
-        allLocationsList = new LocationList();
-        rentedLocationsList = new LocationList();
-        companyList = new CompanyList();
-
-        palletList = new PalletList();
+        company.setCompanyID("test");
+        company.setEmail("test");
+        company.setName("test");
+        company.setPhone(1111);
         companyController = new CompanyController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
         locationController = new LocationController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
         palletController = new PalletController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
@@ -57,90 +45,84 @@ public class UnitTest {
     @Test
     public void RegisterCompanyTest() throws SQLException{
         companyController.registerCompany(company);
-        Assert.assertEquals(company.getCompanyID(), companyController.getCompanyByID("com1234").getCompanyID());
+        Assert.assertEquals("test", companyController.getCompanyByID("test").getCompanyID());
+        companyController.removeCompany("test");
     }
 
     @Test
     public void GetCompanyByIDTest() throws SQLException {
-        Company c = new Company();
-        c.setCompanyID("com1234");
-        c.setEmail("comA.com");
-        c.setName("comAAA");
-        c.setPhone(1111111);
-        Assert.assertEquals(c.getName(), companyController.getCompanyByID("com1234").getName());
-        Assert.assertEquals(c.getEmail(), companyController.getCompanyByID("com1234").getEmail());
-        Assert.assertEquals(c.getCompanyID(), companyController.getCompanyByID("com1234").getCompanyID());
-        Assert.assertEquals(c.getPhone(), companyController.getCompanyByID("com1234").getPhone());
+        Assert.assertEquals("comAAA", companyController.getCompanyByID("com1234").getName());
+        Assert.assertEquals("comA.com", companyController.getCompanyByID("com1234").getEmail());
+        Assert.assertEquals(1111111, companyController.getCompanyByID("com1234").getPhone());
     }
 
 
     @Test
     public void getCompanyListTest() throws SQLException{
-       Assert.assertEquals(companyList.size(), companyController.getCompanyList().size());
-        Company c1 = new Company();
-        company.setCompanyID("com2345");
-        company.setEmail("test");
-        company.setName("test");
-        company.setPhone(0000000);
-        companyController.registerCompany(c1);
-        Assert.assertEquals(companyList.size(), companyController.getCompanyList().size());
+        Assert.assertEquals(5, companyController.getCompanyList().size());
     }
-
-//    @Test
-//    public void getCompanyListTest() throws SQLException{
-//        Company company = new Company();
-//        company.setCompanyID("test");
-//        company.setEmail("test");
-//        company.setName("test");
-//        company.setPhone(0000000);
-//        companyController.registerCompany(company);
-//        Assert.assertEquals(company.getCompanyID(),companyController.getCompanyByID("test").getCompanyID());
-//    }
 
     @Test
     public void getLocationsByIdTest() throws SQLException {
-        Assert.assertEquals(location.getLocationID(), locationController.getLocationByID("loc1234").getLocationID());
-        Assert.assertEquals(location.getRentalStart(), locationController.getLocationByID("loc1234").getRentalStart());
-        Assert.assertEquals(location.getRentalStart(), locationController.getLocationByID("loc1234").getRentalEnd());
+        Assert.assertEquals("locA", locationController.getLocationByID("locA").getLocationID());
     }
 
     @Test
-    public void assignLocationToCompanyTest() throws SQLException{
-        locationController.assignLocationToCompany("loc1234","3333",Date.valueOf("2019-01-01"), Date.valueOf("2019-11-30"));
-        Assert.assertEquals(location.getLocationID(), locationController.getLocationByID("loc222"));
+    public void assignLocationToCompanyAndRemoveLocationFromCompanyTest() throws SQLException{
+
+        //test for assigning
+        locationController.assignLocationToCompany("locB","com1234",Date.valueOf("2019-01-01"), Date.valueOf("2019-11-30"));
+        Assert.assertEquals(2, locationController.getLocationsOfCurrentCompany("com1234").size());
+
+        //test for removing
+        locationController.removeLocationFromCurrentCompany("locB","com1234");
+        Assert.assertEquals(1,locationController.getLocationsOfCurrentCompany("com1234").size());
     }
 
     @Test
     public void getLocationOfCurrentCompanyTest() throws SQLException {
-      Assert.assertEquals(rentedLocationsList.size(), locationController.getLocationsOfCurrentCompany("com1234").size());
-      locationController.assignLocationToCompany("loc3456","com1234", Date.valueOf("2019-04-01"), Date.valueOf("2019-12-30"));
-      Assert.assertEquals(rentedLocationsList.size(), locationController.getLocationsOfCurrentCompany("com1234").size());
+      Assert.assertEquals(1, locationController.getLocationsOfCurrentCompany("com1234").size());
+      locationController.assignLocationToCompany("locB","com1234", Date.valueOf("2019-04-01"), Date.valueOf("2019-12-30"));
+      Assert.assertEquals(2, locationController.getLocationsOfCurrentCompany("com1234").size());
+      locationController.removeLocationFromCurrentCompany("locB","com1234");
     }
+
     // the size method is added to make the test
     @Test
     public void getAvailableLocationsTest() throws SQLException{
-       Assert.assertEquals(allLocationsList.size(), locationController.getAvailableLocations().size());
-       Location l1 = new Location();
-       l1.setLocationID("loc2345");
-       Assert.assertEquals(allLocationsList.size(), locationController.getAvailableLocations().size());
+       Assert.assertEquals(1, locationController.getAvailableLocations().size());
+       locationController.assignLocationToCompany("locB","com1234", Date.valueOf("2019-04-01"), Date.valueOf("2019-12-30"));
+       Assert.assertEquals(0, locationController.getAvailableLocations().size());
+       locationController.removeLocationFromCurrentCompany("locB","com1234");
     }
 
     @Test
     public void getPalletByIDTest() throws SQLException {
-       Assert.assertEquals(pallet.getPalletID(), palletController.getPalletByID("pal123", "com1234", "loc1234").getPalletID());
+       Assert.assertEquals("2019-01-10", palletController.getPalletByID("pal1111", "com1234").getArrivalDate().toString());
     }
 
     @Test
     public void storedPalletTest() throws SQLException {
-        palletController.StorePallet(pallet, "com1234", "loc1234");
-        Assert.assertEquals(pallet.getPalletID(), palletController.getPalletByID("pal123","com1234", "loc1234").getPalletID());
+        Pallet p = new Pallet();
+        p.setPalletID("test");
+        p.setArrivalDate(Date.valueOf("2019-01-01"));
+        p.setPalletArea(2.0);
+        p.setPalletHeight(1.1);
+        palletController.StorePallet(p, "com1234", "locA");
+        Assert.assertEquals("test", palletController.getPalletByID("test","com1234").getPalletID());
+        palletController.removePallet("test","com1234");
     }
 
     @Test
     public void getPalletTest() throws SQLException{
-        Assert.assertEquals(palletList.size(), palletController.getPalletList().size());
-        Pallet p1 = new Pallet();
-        p1.setPalletID("pal234");
-        Assert.assertEquals(palletList.size(), palletController.getPalletList().size());
+        Assert.assertEquals(4, palletController.getPalletList().size());
+        Pallet p = new Pallet();
+        p.setPalletID("test");
+        p.setArrivalDate(Date.valueOf("2019-01-01"));
+        p.setPalletArea(2.0);
+        p.setPalletHeight(1.1);
+        palletController.StorePallet(p,"com1234","locA");
+        Assert.assertEquals(5, palletController.getPalletList().size());
+        palletController.removePallet("test","com1234");
     }
 }

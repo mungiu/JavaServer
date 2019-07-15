@@ -55,8 +55,9 @@ public class Company {
         this.email = email;
     }
 
-    public LocationList getLocationList() {
-        return locationList;
-    }
-
+//    public LocationList getLocationList() {
+//        return locationList;
+//    }
+//
+//    private LocationList locationList = new LocationList();
 }
