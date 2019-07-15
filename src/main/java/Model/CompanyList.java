@@ -8,4 +8,6 @@ public class CompanyList {
     }
 
     private ArrayList<Company> Companies = new ArrayList<Company>();
+
+    public int size() {return Companies.size();}
 }

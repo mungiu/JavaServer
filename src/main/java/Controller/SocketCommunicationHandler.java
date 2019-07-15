@@ -2,7 +2,9 @@ package Controller;
 
 import Model.*;
 import Utils.Database;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.xml.internal.ws.client.SenderException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -59,16 +61,21 @@ public class SocketCommunicationHandler implements Runnable {
             case REGISTER_COMPANY:
                 try {
                     Company company = new ObjectMapper().readValue(request.getObj().toString(), Company.class);
-                    iCompanyController.registerCompany(company);
+                    try {
+						iCompanyController.registerCompany(company);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                     send(SUCCESS);
-                } catch (IOException | SQLException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
 
             case   ASSIGN_LOCATION_TO_COMPANY:
                 try {
-                    iLocationController.assignLocationToCompany(request.getLocationID(),request.getCompanyID(), request.getRentalEndDate());
+                    iLocationController.assignLocationToCompany(request.getLocationID(), request.getCompanyID(), ((Location) request.getObj()).getRentalStart(),((Location) request.getObj()).getRentalEnd());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -77,7 +84,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_LOCATION_FROM_CURRENT_COMPANY:
                 try {
-                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID(),request.getCompanyID());
+                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -119,7 +126,7 @@ public class SocketCommunicationHandler implements Runnable {
             case STORE_PALLET:
                 try {
                     Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
-                    iPalletController.StorePallet(pallet, request.getCompanyID(),request.getLocationID());
+                    iPalletController.StorePallet(pallet,request.getLocationID(),request.getCompanyID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -128,7 +135,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_PALLET:
                 try {
-                    iPalletController.removePallet(request.getPalletID(), request.getLocationID());
+                    iPalletController.removePallet(request.getPalletID(),request.getLocationID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -137,7 +144,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case GET_PALLET_BYID:
                 try {
-                    Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getCompanyID());
+                    Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getLocationID(), request.getLocationID());
                     String response = new ObjectMapper().writeValueAsString(pallet);
                     send(response);
                 } catch (IOException | SQLException e) {
@@ -166,6 +173,17 @@ public class SocketCommunicationHandler implements Runnable {
                     e.printStackTrace();
                 }
                 break;
+
+            case GET_LOCATIONS_OF_CURRENT_COMPANY:
+                try{
+                    LocationList locationList = iLocationController.getLocationsOfCurrentCompany(request.getCompanyID());
+                    System.out.println(locationList.toString());
+                    String response = new ObjectMapper().writeValueAsString(locationList);
+                    send(response);
+
+                }catch(SQLException | IOException e){
+                    e.printStackTrace();
+                }
         }
     }
 
