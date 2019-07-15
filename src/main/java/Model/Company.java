@@ -1,6 +1,11 @@
 package Model;
 
 public class Company {
+    private String companyID;
+    private String name;
+    private int phone;
+    private String email;
+    private LocationList locationList = new LocationList();
 
     private String companyID;
     private String name;

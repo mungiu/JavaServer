@@ -3,6 +3,7 @@ package Model;
 
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class SocketRequest implements Serializable {
 
@@ -11,6 +12,8 @@ public class SocketRequest implements Serializable {
     private String locationID;
     private String companyID;
     private String palletID;
+
+    private Date rentalEndDate;
 
     // it instantiates the socket request with three parameters one action, one object and one string.
 
@@ -105,10 +108,20 @@ public class SocketRequest implements Serializable {
     public void setObj(String obj) {
         this.obj = obj;
     }
+
     public String getPalletID() {
         return palletID;
     }
+
     public void setPalletID(String palletID) {
         this.palletID = palletID;
+    }
+
+    public Date getRentalEndDate() {
+        return rentalEndDate;
+    }
+
+    public void setRentalEndDate(Date rentalEndDate) {
+        this.rentalEndDate = rentalEndDate;
     }
 }
