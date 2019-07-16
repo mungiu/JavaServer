@@ -38,6 +38,23 @@ public class PalletController implements IPalletController {
         pallet.setPalletHeight(resultSet.getDouble(4));
         pallet.setPalletArea(resultSet.getDouble(5));
         pallet.setArrivalDate(resultSet.getDate(6));
+  
+        return  pallet;
+    }
+    
+    public Pallet populateStoredPallet(ResultSet resultSet) throws SQLException {
+        Pallet pallet = new Pallet();
+        Company com = new Company();
+        Location loc = new Location();
+        pallet.setPalletID(resultSet.getString(1));
+        com.setCompanyID(resultSet.getString(2));
+        loc.setLocationID(resultSet.getString(3));
+        pallet.setPalletHeight(resultSet.getDouble(4));
+        pallet.setPalletArea(resultSet.getDouble(5));
+        pallet.setArrivalDate(resultSet.getDate(6));
+        pallet.setDaysStored(resultSet.getDate(7));
+        
+  
         return  pallet;
     }
 
@@ -70,7 +87,7 @@ public class PalletController implements IPalletController {
     // it assign a specific pallet for the renting company in a specific location.
     @Override
     public void StorePallet(Pallet pallet, String companyID , String locationID) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".pallet (palletID, companyid, locationid, palletheight, palletarea, arrivaledate) values (?,?,?,?,?,?)");
+        PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".pallet (palletID, companyid, locationid, palletheight, palletarea, arrivaldate) values (?,?,?,?,?,?)");
         statement.setString(1, pallet.getPalletID());
         statement.setString(2, companyID);
         statement.setString(3, locationID);
@@ -88,7 +105,7 @@ public class PalletController implements IPalletController {
 
         PalletList palletList = new PalletList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".pallet");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".PalletStored order by palletid asc");
 
         while (resultSet.next())
         {

@@ -4,12 +4,13 @@ import java.sql.Date;
 
 public class Pallet {
 	
+	private String palletID;
 	private double palletHeight;
     private double palletArea;
     private Date arrivalDate;
-    private int daysStored;
+    private Date daysStored;
     
-    private String palletID;
+    
 
     // it returns the value of the private palletID variable.
 
@@ -61,13 +62,13 @@ public class Pallet {
 
     // it returns the number of days in which the pallet is stored.
 
-    public int getDaysStored() {
+    public Date getDaysStored() {
         return daysStored;
     }
 
     // it edits the number of the days in which the pallet is stored to the new one in the parameter.
 
-    public void setDaysStored(int daysStored) {
+    public void setDaysStored(Date daysStored) {
         this.daysStored = daysStored;
     }
 

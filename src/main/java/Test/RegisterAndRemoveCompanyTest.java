@@ -1,7 +1,5 @@
 package Test;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,11 +7,9 @@ import Controller.CompanyController;
 import Model.Company;
 import Utils.Database;
 
-public class RegisterCompanyTest {
+public class RegisterAndRemoveCompanyTest {
 
     private CompanyController cc = new CompanyController(Database.getConnection());
-    private Connection connection;
-
     @Test
     public void RegisterCompany() throws SQLException{
         Company c = new Company();
@@ -40,6 +36,7 @@ public class RegisterCompanyTest {
         Assert.assertEquals("comEmailtes",cc.getCompanyByID("comIDTest").getEmail());
         Assert.assertEquals("comNametest",cc.getCompanyByID("comIDTest").getName());
         Assert.assertEquals(6666666,cc.getCompanyByID("comIDTest").getPhone());
+        cc.removeCompany(c.getCompanyID());
   //      statement.close();
     }
    

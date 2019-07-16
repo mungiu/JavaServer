@@ -12,25 +12,18 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class UnitTest {
-    private static int dbPort = 5433;
-    private static final String DB_NAME = "postgres";
+public class UnitTest {                                  // This class is distributed into separate classes for more organization 
+    private static int dbPort = 5432;
+    private static final String DB_NAME = "WME";
     private static String dbAddress = "localhost";
     private static String dbUsername = "postgres";
-    private static String dbPassword = "1111";
+    private static String dbPassword = "Jwan0090j";
     private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
 
     private CompanyController companyController;
     private LocationController locationController;
     private PalletController palletController;
-    private Location location;
-    private LocationList allLocationsList;
-    private LocationList rentedLocationsList;
     private Company company = new Company();
-    private CompanyList companyList;
-    private Pallet pallet;
-    private PalletList palletList;
-
     @Before
     public void setUp() throws Exception {
         company.setCompanyID("test");
