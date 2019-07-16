@@ -1,15 +1,11 @@
 package Controller;
 
-import Model.Company;
 import Model.Location;
 import Model.LocationList;
-import Utils.Database;
-
 import java.sql.*;
 
 public class LocationController implements ILocationController {
 
-    private static String DB_NAME;
     private Connection connection;
     private String schemaName;
 
@@ -17,7 +13,6 @@ public class LocationController implements ILocationController {
 
     public LocationController(Connection dbConnection){
         this.connection = dbConnection;
-        this.DB_NAME = Database.DB_NAME;
         this.schemaName = "WME";
     }
 
@@ -37,13 +32,12 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
     @Override
     public void assignLocationToCompany(String locationID, String companyID, Date rentalStart, Date rentalEnd) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".rentedlocation (companyID, locationid, rentalstart, rentalend) values (?,?,?,?)");
-        Company company = new Company();
         statement.setString(1, companyID);
         statement.setString(2, locationID);
         statement.setDate(3, rentalStart);
         statement.setDate(4, rentalEnd);
         statement.executeUpdate();
-        statement = connection.prepareStatement("delete from \"" + schemaName + "\".location where locationid = "+"'"+locationID+"'");
+        statement = connection.prepareStatement("delete from \"" + schemaName + "\".locations where locationid = "+"'"+locationID+"'");
         statement.executeUpdate();
         statement.close();
     }
@@ -54,7 +48,7 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
     public void removeLocationFromCurrentCompany(String locationID) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = "+"'"+locationID+"'");
         statement.executeUpdate();
-        statement = connection.prepareStatement("insert into \"" + schemaName + "\".location (locationid) values (?)");
+        statement = connection.prepareStatement("insert into \"" + schemaName + "\".locations (locationid) values (?)");
         statement.setString(1, locationID);
         statement.executeUpdate();
         statement.close();
@@ -66,7 +60,7 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
     public Location getLocationByID(String locationID) throws SQLException{
         Location l = new Location();
         Statement statement = connection.createStatement();
-        String sqlStatement = "SELECT * FROM \"" + schemaName + "\".location where locationID = " + "'" + locationID + "'";
+        String sqlStatement = "SELECT * FROM \"" + schemaName + "\".locations where locationID = " + "'" + locationID + "'";
         ResultSet resultSet = statement.executeQuery(sqlStatement);
 
         while (resultSet.next())
@@ -83,7 +77,7 @@ public Location populateLocation(ResultSet resultSet) throws SQLException{
     public LocationList getAvailableLocations() throws SQLException{
         LocationList locationList = new LocationList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".location");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".available");
 
         while (resultSet.next())
         {

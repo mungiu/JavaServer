@@ -20,7 +20,7 @@ public class CompanyController implements ICompanyController {
     
       // it returns a specific company details when a specific company id is requested
     
-    public Company getCompanyByID(String companyID) throws SQLException{
+    public Company getCompanyByID(String companyID) throws SQLException{ // tested
     	
     	   Company company = new Company();  
            Statement statement = connection.createStatement();
@@ -59,22 +59,16 @@ public class CompanyController implements ICompanyController {
     public void registerCompany(Company company) throws SQLException {
     	
 
-    	PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
-        statement.setString(1, company.getCompanyID());
+    	PreparedStatement statement = 
+    			connection.prepareStatement("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
+        
+    	statement.setString(1, company.getCompanyID());
         statement.setString(2, company.getName());
         statement.setInt(3, company.getPhone());
         statement.setString(4, company.getEmail());
     	statement.executeUpdate();
     	statement.close();
     
-//        ResultSet resultSet = statement.executeQuery("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
-      
-//        resultSet.updateString(1, company.getCompanyID());
-//        resultSet.updateString(2, company.getName());
-//        resultSet.updateInt(3, company.getPhone());
-//        resultSet.updateString(4, company.getEmail());
-
-
     }
 
 
@@ -119,4 +113,7 @@ public class CompanyController implements ICompanyController {
         statement.executeUpdate();
         statement.close();
     }
+
+
+	
 }

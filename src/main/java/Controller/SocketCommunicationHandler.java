@@ -2,9 +2,7 @@ package Controller;
 
 import Model.*;
 import Utils.Database;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.ws.client.SenderException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -184,6 +182,12 @@ public class SocketCommunicationHandler implements Runnable {
                 }catch(SQLException | IOException e){
                     e.printStackTrace();
                 }
+		case EDIT_PALLET:
+			break;
+		case GET_LOCATION_BYID:
+			break;
+		default:
+			break;
         }
     }
 

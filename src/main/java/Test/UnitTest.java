@@ -4,21 +4,22 @@ import Controller.CompanyController;
 import Controller.LocationController;
 import Controller.PalletController;
 import Model.*;
+import Utils.Database;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class UnitTest {
-    private static int dbPort = 5432;
-    private static final String DB_NAME = "postgres";
-    private static String dbAddress = "localhost";
-    private static String dbUsername = "postgres";
-    private static String dbPassword = "1111";
-    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
+//    private static int dbPort = 5432;
+//    private static final String DB_NAME = "WME";
+//    private static String dbAddress = "localhost";
+//    private static String dbUsername = "postgres";
+//    private static String dbPassword = "Jwan0090j";
+//    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
 
     private CompanyController companyController;
     private LocationController locationController;
@@ -49,9 +50,9 @@ public class UnitTest {
         companyList = new CompanyList();
 
         palletList = new PalletList();
-        companyController = new CompanyController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
-        locationController = new LocationController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
-        palletController = new PalletController(DriverManager.getConnection(postgresSQLUrl, dbUsername, dbPassword));
+        companyController = new CompanyController(Database.getConnection());
+        locationController = new LocationController(Database.getConnection());
+        palletController = new PalletController(Database.getConnection());
     }
 
     @Test

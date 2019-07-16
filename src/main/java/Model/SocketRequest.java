@@ -6,7 +6,11 @@ import java.io.Serializable;
 
 public class SocketRequest implements Serializable {
 
-    private ACTION action;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private ACTION action;
     private Object obj;
     private String locationID;
     private String companyID;
