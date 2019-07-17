@@ -77,7 +77,7 @@ public class CompanyController implements ICompanyController {
     public CompanyList getCompanyList() throws SQLException {
         CompanyList companyList = new CompanyList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".company");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".company order by companyid asc");
 
         while (resultSet.next())
         {
@@ -90,11 +90,13 @@ public class CompanyController implements ICompanyController {
     // this method is used when editing company details in the application database
     
     public void editCompany(Company company) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("update \"" + schemaName + "\".company set (companyID, name, phone, email) values (?,?,?,?)");
-        statement.setString(1, company.getCompanyID());
-        statement.setString(2, company.getName());
-        statement.setInt(3, company.getPhone());
-        statement.setString(4, company.getEmail());
+        PreparedStatement statement = connection.prepareStatement(
+        		"update \"" + schemaName + "\".company set companyID = '"+company.getCompanyID() +"',name ='"+company.getName()+"',phone ='"+company.getPhone()
+        		+"',Email ='"+company.getEmail ()+ "' where companyid = '"+company.getCompanyID()+"'");
+//        statement.setString(1, company.getCompanyID());
+//        statement.setString(2, company.getName());
+//        statement.setInt(3, company.getPhone());
+//        statement.setString(4, company.getEmail());
         statement.executeUpdate();
         statement.close();
     }

@@ -1,15 +1,10 @@
 package Controller;
 
 import Model.*;
-import Utils.Database;
-
-import javax.xml.transform.Result;
 import java.sql.*;
-import java.time.LocalDate;
 
 public class LocationController implements ILocationController {
 
-    private static String DB_NAME;
     private Connection connection;
     private String schemaName;
 
@@ -17,7 +12,6 @@ public class LocationController implements ILocationController {
 
     public LocationController(Connection dbConnection){
         this.connection = dbConnection;
-        this.DB_NAME = Database.DB_NAME;
         this.schemaName = "WME";
     }
 
@@ -86,7 +80,7 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
     public LocationList getAvailableLocations() throws SQLException{
         LocationList locationList = new LocationList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".available");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".availableLocations order by locationid asc");
 
         while (resultSet.next())
         {
@@ -100,7 +94,7 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
     public LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException{
         LocationList locationList = new LocationList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".rentedlocation where companyid = '"+companyID+"'");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".rentedlocation where companyid = '"+companyID+"' order by locationid asc");
 
         while(resultSet.next()) {
             locationList.getLocations().add(populateRentedLocation(resultSet));
