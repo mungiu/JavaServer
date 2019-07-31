@@ -13,11 +13,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class UnitTest {                                  // This class is distributed into separate classes for more organization 
-    private static int dbPort = 5432;
-    private static final String DB_NAME = "WME";
+    private static int dbPort = 5433;
+    private static final String DB_NAME = "postgres";
     private static String dbAddress = "localhost";
     private static String dbUsername = "postgres";
-    private static String dbPassword = "Jwan0090j";
+    private static String dbPassword = "1111";
     private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
 
     private CompanyController companyController;

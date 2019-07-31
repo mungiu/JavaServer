@@ -13,12 +13,12 @@ public class Database {
 //    private static String dbPassword = "Jwan0090j";
 //    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":" + dbPort + "/" + DB_NAME;
 
-    public static final String DB_NAME = "WME";
+    public static final String DB_NAME = "postgres";
     private static String dbAddress = "localhost";
-    private static int dbPort = 5432;
+    private static int dbPort = 5433;
     private static String dbUsername = "postgres";
-    private static String dbPassword = "930yuqiang";
-    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + "/" + DB_NAME;
+    private static String dbPassword = "1111";
+    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
     /**
      * Lazy instantiation of the database connection
      *
