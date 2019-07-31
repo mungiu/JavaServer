@@ -80,7 +80,7 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
     public LocationList getAvailableLocations() throws SQLException{
         LocationList locationList = new LocationList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".availableLocations order by locationid asc");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".availableLocations order by availablelocations asc");
 
         while (resultSet.next())
         {
