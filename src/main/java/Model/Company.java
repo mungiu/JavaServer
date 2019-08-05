@@ -55,6 +55,14 @@ public class Company {
         this.email = email;
     }
 
+    public LocationList getLocationList() {
+        return locationList;
+    }
+
+    public void setLocationList(LocationList locationList) {
+        this.locationList = locationList;
+    }
+
 //    public LocationList getLocationList() {
 //        return locationList;
 //    }

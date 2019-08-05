@@ -5,7 +5,6 @@ import java.sql.Date;
 public class Location {
     private String locationID;
     private Date rentalStart;
-    private Date rentalEnd;
     // it returns the value of the private locationID variable.
 
     public String getLocationID() {
@@ -28,18 +27,6 @@ public class Location {
 
     public void setRentalStart(Date rentalStart) {
         this.rentalStart = rentalStart;
-    }
-
-    // it returns the value of the private rental end variable.
-
-    public Date getRentalEnd() {
-        return rentalEnd;
-    }
-
-    // it edits the rental end of a location to the new one in the parameter.
-
-    public void setRentalEnd(Date rentalEnd) {
-        this.rentalEnd = rentalEnd;
     }
 
 }

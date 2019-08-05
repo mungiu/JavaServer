@@ -1,33 +1,52 @@
 package Test;
 
-import java.sql.Date;
-import java.sql.SQLException;
-import org.junit.Test;
 import Controller.PalletController;
 import Model.Company;
 import Model.Location;
 import Model.Pallet;
 import Utils.Database;
 import junit.framework.Assert;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.sql.Date;
+import java.sql.SQLException;
 
 public class getPalletByIDTest {
-	private PalletController pc = new PalletController(Database.getConnection());
-	
-	@Test
-    public void getPalletByID() throws SQLException {
-        Pallet p = new Pallet();
-        Company com = new Company();
-        Location loc = new Location();
-        p.setPalletID("pal1111");
+
+    private PalletController pc = new PalletController(Database.getConnection());
+    private Pallet pallet = new Pallet();
+    private Company com = new Company();
+    private Location loc = new Location();
+
+    @Before
+    public void init(){
+        pallet.setPalletID("pal1111");
         com.setCompanyID("com1234");
         loc.setLocationID("locA");
-        p.setPalletHeight(1.1);
-        p.setPalletArea(10.10);
-        p.setArrivalDate(Date.valueOf("2019-10-01"));
-        
-        Assert.assertEquals("pal1111", pc.getPalletByID(p.getPalletID(), com.getCompanyID()).getPalletID());
-              
-                
+        pallet.setPalletHeight(1.1);
+        pallet.setPalletArea(10.10);
+        pallet.setArrivalDate(Date.valueOf("2019-10-01"));
+
+        try {
+            pc.StorePallet(pallet,com.getCompanyID(),loc.getLocationID());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
+	@Test
+    public void getPalletByID() throws SQLException {
+        Assert.assertEquals("pal1111", pc.getPalletByID(pallet.getPalletID(), com.getCompanyID()).getPalletID());
+    }
+
+    @After
+    public void after(){
+        try {
+            pc.removePallet(pallet.getPalletID(), com.getCompanyID());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

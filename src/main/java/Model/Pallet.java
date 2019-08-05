@@ -1,5 +1,7 @@
 package Model;
 
+import org.postgresql.util.PGInterval;
+
 import java.sql.Date;
 
 public class Pallet {
@@ -8,7 +10,7 @@ public class Pallet {
 	private double palletHeight;
     private double palletArea;
     private Date arrivalDate;
-    private Date daysStored;
+    private PGInterval daysStored;
     
     
 
@@ -62,13 +64,13 @@ public class Pallet {
 
     // it returns the number of days in which the pallet is stored.
 
-    public Date getDaysStored() {
+    public PGInterval getDaysStored() {
         return daysStored;
     }
 
     // it edits the number of the days in which the pallet is stored to the new one in the parameter.
 
-    public void setDaysStored(Date daysStored) {
+    public void setDaysStored(PGInterval daysStored) {
         this.daysStored = daysStored;
     }
 

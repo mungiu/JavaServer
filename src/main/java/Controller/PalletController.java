@@ -4,11 +4,9 @@ import Model.Company;
 import Model.Location;
 import Model.Pallet;
 import Model.PalletList;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import org.postgresql.util.PGInterval;
+
+import java.sql.*;
 
 
 public class PalletController implements IPalletController {
@@ -52,7 +50,7 @@ public class PalletController implements IPalletController {
         pallet.setPalletHeight(resultSet.getDouble(4));
         pallet.setPalletArea(resultSet.getDouble(5));
         pallet.setArrivalDate(resultSet.getDate(6));
-        pallet.setDaysStored(resultSet.getDate(7));
+        pallet.setDaysStored((PGInterval)resultSet.getObject(7));
         
   
         return  pallet;
@@ -105,7 +103,7 @@ public class PalletController implements IPalletController {
 
         PalletList palletList = new PalletList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".PalletStored order by palletid asc");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".palletstored order by palletid asc");
 
         while (resultSet.next())
         {

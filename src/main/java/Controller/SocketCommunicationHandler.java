@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class SocketCommunicationHandler implements Runnable {
     private Socket socket;
@@ -48,7 +50,10 @@ public class SocketCommunicationHandler implements Runnable {
             System.out.println(json);
             request = new SocketRequest(
                     jsonObject.getEnum(SocketRequest.ACTION.class, "Action"),
-                    jsonObject.get("Obj").equals(null)  ? null : jsonObject.getJSONObject("Obj")
+                    jsonObject.get("Obj").equals(null)  ? null : jsonObject.getJSONObject("Obj"),
+                    jsonObject.get("LocationID").equals(null) ? null : jsonObject.getString("LocationID"),
+                    jsonObject.get("CompanyID").equals(null) ? null : jsonObject.getString("CompanyID"),
+                    jsonObject.get("PalletID").equals(null) ? null : jsonObject.getString("PalletID")
             );
             System.out.println(request.getObj());
         } catch (IOException e) {
@@ -73,7 +78,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case   ASSIGN_LOCATION_TO_COMPANY:
                 try {
-                    iLocationController.assignLocationToCompany(request.getLocationID(), request.getCompanyID(), ((Location) request.getObj()).getRentalStart(),((Location) request.getObj()).getRentalEnd());
+                    iLocationController.assignLocationToCompany(request.getLocationID(), request.getCompanyID(), Date.valueOf(LocalDate.now()));
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();

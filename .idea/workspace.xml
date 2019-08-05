@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="f6ff6644-468c-4570-bf48-e4e08608695a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ILocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ILocationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SocketCommunicationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SocketCommunicationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Pallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Pallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/SocketRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/SocketRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test/UnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/UnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/getAvailableLoationsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/getAvailableLoationsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/getPalletListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/getPalletListTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,55 +48,51 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Test/getAvailableLoationsTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/SocketCommunicationHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="125">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Location.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Pallet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#914#915#0" expanded="true" />
+                <element signature="e#947#948#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ILocationController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Test/getPalletListTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+            <state relative-caret-position="238">
+              <caret line="22" column="49" lean-forward="true" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/CompanyController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/PalletController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1463">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ICompanyController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/IPalletController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="193">
+              <caret line="52" column="62" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -93,35 +100,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controller/LocationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="82" column="137" selection-start-line="82" selection-start-column="137" selection-end-line="82" selection-end-column="137" />
+            <state relative-caret-position="261">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Test/UnitTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/SocketRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="227">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2582#2583#0" expanded="true" />
+                <element signature="e#2615#2616#0" expanded="true" />
+                <element signature="e#2779#2780#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/PalletController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Test/RegisterAndRemoveCompanyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Test/getAvailableLoationsTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="25" column="104" lean-forward="true" selection-start-line="25" selection-start-column="104" selection-end-line="25" selection-end-column="104" />
+            <state relative-caret-position="340">
+              <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -145,16 +152,22 @@
         <option value="$PROJECT_DIR$/src/main/java/Model/LocationList.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/IPalletController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/SocketServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Pallet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/ICompanyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/CompanyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Company.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Location.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/ILocationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/UnitTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/getAvailableLoationsTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/getPalletListTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/SocketRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/SocketCommunicationHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/ILocationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/ICompanyController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Company.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/CompanyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Pallet.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" />
       </list>
     </option>
   </component>
@@ -166,10 +179,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-60" />
-    <option name="y" value="5" />
-    <option name="width" value="1750" />
-    <option name="height" value="980" />
+    <option name="x" value="-8" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -239,7 +251,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -279,8 +290,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.getAvailableLoationsTest.getAvailableLocationsTest">
-    <configuration name="RegisterAndRemoveCompanyTest.RegisterCompany" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="JavaServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegisterAndRemoveCompanyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaServer" />
       <extension name="coverage">
         <pattern>
@@ -289,44 +307,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" />
+      <option name="MAIN_CLASS_NAME" value="Test.RegisterAndRemoveCompanyTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EditeCompanyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.EditeCompanyTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="getAvailableLoationsTest.getAvailableLocationsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.getAvailableLoationsTest" />
-      <option name="METHOD_NAME" value="getAvailableLocationsTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StorePalletAndRemovePalletTest.StorePaller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StorePalletAndRemovePalletTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaServer" />
       <extension name="coverage">
         <pattern>
@@ -336,13 +323,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="Test" />
       <option name="MAIN_CLASS_NAME" value="Test.StorePalletAndRemovePalletTest" />
-      <option name="METHOD_NAME" value="StorePaller" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="getAvailableLoationsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="getPalletByIDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaServer" />
       <extension name="coverage">
         <pattern>
@@ -351,7 +337,22 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.getAvailableLoationsTest" />
+      <option name="MAIN_CLASS_NAME" value="Test.getPalletByIDTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="getPalletListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.getPalletListTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -359,11 +360,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.getAvailableLoationsTest.getAvailableLocationsTest" />
-        <item itemvalue="JUnit.StorePalletAndRemovePalletTest.StorePaller" />
-        <item itemvalue="JUnit.RegisterAndRemoveCompanyTest.RegisterCompany" />
-        <item itemvalue="JUnit.getPalletListTest.getPalletList" />
-        <item itemvalue="JUnit.getPalletByIDTest.getPalletByID" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.getPalletListTest" />
+        <item itemvalue="JUnit.StorePalletAndRemovePalletTest" />
+        <item itemvalue="JUnit.RegisterAndRemoveCompanyTest" />
+        <item itemvalue="JUnit.getPalletByIDTest" />
       </list>
     </recent_temporary>
   </component>
@@ -391,49 +392,51 @@
       <workItem from="1563276634202" duration="188000" />
       <workItem from="1563291671514" duration="619000" />
       <workItem from="1563912119157" duration="1046000" />
+      <workItem from="1564989769965" duration="9019000" />
+      <workItem from="1565000371070" duration="13166000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="getLocationByIDTest_getLocationsByIdTest - 2019.07.16 at 17h 49m 01s.xml">
-      <configuration name="getLocationByIDTest.getLocationsByIdTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 15h 52m 13s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest - 2019.07.20 at 17h 11m 54s.xml">
-      <configuration name="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 15h 53m 28s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest - 2019.07.20 at 18h 02m 55s.xml">
-      <configuration name="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 15h 54m 53s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest - 2019.07.21 at 00h 12m 10s.xml">
-      <configuration name="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 15h 55m 37s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EditeCompanyTest - 2019.07.21 at 00h 33m 26s.xml">
-      <configuration name="EditeCompanyTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 16h 00m 52s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="getAvailableLoationsTest - 2019.07.21 at 00h 33m 34s.xml">
-      <configuration name="getAvailableLoationsTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 16h 03m 13s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="getAvailableLoationsTest - 2019.07.23 at 19h 27m 38s.xml">
-      <configuration name="getAvailableLoationsTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 16h 07m 07s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="getAvailableLoationsTest_getAvailableLocationsTest - 2019.07.23 at 22h 03m 19s.xml">
-      <configuration name="getAvailableLoationsTest.getAvailableLocationsTest" configurationId="JUnit" />
+    <history-entry file="RegisterAndRemoveCompanyTest - 2019.08.05 at 16h 24m 14s.xml">
+      <configuration name="RegisterAndRemoveCompanyTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="getAvailableLoationsTest_getAvailableLocationsTest - 2019.07.23 at 22h 04m 51s.xml">
-      <configuration name="getAvailableLoationsTest.getAvailableLocationsTest" configurationId="JUnit" />
+    <history-entry file="StorePalletAndRemovePalletTest - 2019.08.05 at 16h 24m 19s.xml">
+      <configuration name="StorePalletAndRemovePalletTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="getAvailableLoationsTest_getAvailableLocationsTest - 2019.07.23 at 22h 07m 12s.xml">
-      <configuration name="getAvailableLoationsTest.getAvailableLocationsTest" configurationId="JUnit" />
+    <history-entry file="getPalletListTest - 2019.08.05 at 16h 24m 24s.xml">
+      <configuration name="getPalletListTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27972000" />
+    <option name="totallyTimeSpent" value="50157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20268457" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2080537" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -443,7 +446,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.39093485" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -466,6 +469,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Controller/SocketCommunicationHandler.java</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.project">
@@ -502,20 +517,6 @@
     <entry file="file://$PROJECT_DIR$/src/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/PalletList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="9" column="72" selection-start-line="9" selection-start-column="72" selection-end-line="9" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Pallet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/CompanyList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -524,13 +525,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/RegisterCompanyTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/LocationList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -545,10 +539,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/StorePalletAndRemovePalletTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/EditeCompanyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-494">
+        <state relative-caret-position="17">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -558,44 +552,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/getCompanyByIDTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="68">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/getCompanyListTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="50" column="94" lean-forward="true" selection-start-line="50" selection-start-column="94" selection-end-line="50" selection-end-column="94" />
+        <state relative-caret-position="714">
+          <caret line="50" column="94" selection-start-line="50" selection-start-column="94" selection-end-line="50" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getLocationByIDTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getLocationOfCurrentCompanyTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getPalletListTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/RegisterAndRemoveCompanyTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/StorePalletAndRemovePalletTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Company.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#1312#1313#0" expanded="true" />
+            <element signature="e#1347#1348#0" expanded="true" />
+            <element signature="e#1409#1410#0" expanded="true" />
+            <element signature="e#1457#1458#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        <state relative-caret-position="437">
+          <caret line="45" column="8" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="49" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ILocationController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/SocketServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/CompanyController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/IPalletController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1463">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -609,41 +611,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/IPalletController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/PalletList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="119">
+          <caret line="9" column="72" selection-start-line="9" selection-start-column="72" selection-end-line="9" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/ILocationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/UnitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39">
+          <caret line="86" column="94" selection-start-line="86" selection-start-column="94" selection-end-line="86" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getAvailableLoationsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="83" selection-start-line="23" selection-start-column="83" selection-end-line="23" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/PalletController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
+        <state relative-caret-position="204">
+          <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getLocationOfCurrentCompanyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getLocationByIDTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/CompanyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="104" column="74" selection-start-line="104" selection-start-column="74" selection-end-line="104" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/RegisterAndRemoveCompanyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getPalletListTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="22" column="49" lean-forward="true" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/SocketRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="82" column="137" selection-start-line="82" selection-start-column="137" selection-end-line="82" selection-end-column="137" />
+        <state relative-caret-position="227">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2582#2583#0" expanded="true" />
+            <element signature="e#2615#2616#0" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/UnitTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/LocationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="261">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/getAvailableLoationsTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/SocketCommunicationHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="25" column="104" lean-forward="true" selection-start-line="25" selection-start-column="104" selection-end-line="25" selection-end-column="104" />
+        <state relative-caret-position="125">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Pallet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller/PalletController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="52" column="62" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
         </state>
       </provider>
     </entry>

@@ -1,12 +1,18 @@
 package Controller;
 
-import Model.*;
+import Model.Company;
+import Model.Location;
+import Model.LocationList;
+
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class LocationController implements ILocationController {
 
     private Connection connection;
     private String schemaName;
+    private SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+
 
     // it instantiates the location controller with a private instance of the database and connection to database.
 
@@ -30,7 +36,6 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
     company.setCompanyID(resultSet.getString(1));
     location.setLocationID(resultSet.getString(2));
     location.setRentalStart(resultSet.getDate(3));
-    location.setRentalEnd(resultSet.getDate(4));
     return location;
 
 }
@@ -38,12 +43,11 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
 // it assigns a specific location for a specific company in the application database.
 
     @Override
-    public void assignLocationToCompany(String locationID, String companyID, Date rentalStart, Date rentalEnd) throws SQLException{
-        PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".rentedlocation (companyID, locationid, rentalstart, rentalend) values (?,?,?,?)");
+    public void assignLocationToCompany(String locationID, String companyID, Date rentalStart) throws SQLException{
+        PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".rentedlocation (companyID, locationid, rentalstart) values (?,?,?)");
         statement.setString(1, companyID);
         statement.setString(2, locationID);
         statement.setDate(3, rentalStart);
-        statement.setDate(4, rentalEnd);
         statement.executeUpdate();
         statement.close();
     }
@@ -52,7 +56,7 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
 
     @Override
     public void removeLocationFromCurrentCompany(String locationID,String companyID) throws SQLException{
-        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = "+"'"+locationID+"' and companyid = '"+companyID+"'");
+        PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = " + "'" + locationID + "'");
         statement.executeUpdate();
         statement.close();
     }
@@ -61,17 +65,17 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
 
     @Override
     public Location getLocationByID(String locationID) throws SQLException{
-        Location l = new Location();
+        Location location = new Location();
         Statement statement = connection.createStatement();
         String sqlStatement = "SELECT * FROM \"" + schemaName + "\".locations where locationID = " + "'" + locationID + "'";
         ResultSet resultSet = statement.executeQuery(sqlStatement);
 
         while (resultSet.next())
         {
-            l = populateLocation(resultSet);
+            location = populateLocation(resultSet);
         }
 
-        return l;
+        return location;
     }
 
     // it returns a list of available locations which are not rented yet.

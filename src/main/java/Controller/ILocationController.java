@@ -7,8 +7,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 public interface ILocationController {
-    void assignLocationToCompany(String locationID, String companyID, Date rentalStart, Date rentalEnd) throws SQLException;
-    void removeLocationFromCurrentCompany(String locationID,String companyID) throws SQLException;
+    void assignLocationToCompany(String locationID, String companyID, Date rentalStart) throws SQLException;
+    void removeLocationFromCurrentCompany(String locationID, String companyID) throws SQLException;
     Location getLocationByID(String locationID) throws SQLException;
     LocationList getAvailableLocations() throws SQLException;
     LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException;

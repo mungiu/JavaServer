@@ -64,7 +64,7 @@ public class UnitTest {                                  // This class is distri
     public void assignLocationToCompanyAndRemoveLocationFromCompanyTest() throws SQLException{
 
         //test for assigning
-        locationController.assignLocationToCompany("locB","com1234",Date.valueOf("2019-01-01"), Date.valueOf("2019-11-30"));
+        locationController.assignLocationToCompany("locB","com1234",Date.valueOf("2019-01-01"));
         Assert.assertEquals(2, locationController.getLocationsOfCurrentCompany("com1234").size());
 
         //test for removing
@@ -75,7 +75,7 @@ public class UnitTest {                                  // This class is distri
     @Test
     public void getLocationOfCurrentCompanyTest() throws SQLException {
       Assert.assertEquals(1, locationController.getLocationsOfCurrentCompany("com1234").size());
-      locationController.assignLocationToCompany("locB","com1234", Date.valueOf("2019-04-01"), Date.valueOf("2019-12-30"));
+      locationController.assignLocationToCompany("locB","com1234", Date.valueOf("2019-04-01"));
       Assert.assertEquals(2, locationController.getLocationsOfCurrentCompany("com1234").size());
       locationController.removeLocationFromCurrentCompany("locB","com1234");
     }
@@ -84,7 +84,7 @@ public class UnitTest {                                  // This class is distri
     @Test
     public void getAvailableLocationsTest() throws SQLException{
        Assert.assertEquals(1, locationController.getAvailableLocations().size());
-       locationController.assignLocationToCompany("locB","com1234", Date.valueOf("2019-04-01"), Date.valueOf("2019-12-30"));
+       locationController.assignLocationToCompany("locB","com1234", Date.valueOf("2019-04-01"));
        Assert.assertEquals(0, locationController.getAvailableLocations().size());
        locationController.removeLocationFromCurrentCompany("locB","com1234");
     }
