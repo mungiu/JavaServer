@@ -27,10 +27,11 @@ public class LocationController implements ILocationController {
     Location location = new Location();
     location.setLocationID(resultSet.getString(1));
     return location;
-}
+    }
 
+    // it is used by other methods to populate the temporary rented location table in the database with the resulted rented locations from those methods.
 
-public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
+    public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
     Location location  = new Location();
     Company company = new Company();
     company.setCompanyID(resultSet.getString(1));
@@ -93,6 +94,8 @@ public Location populateRentedLocation(ResultSet resultSet) throws SQLException{
 
         return locationList;
     }
+
+    // it returns the rented locations list by a specific company when the company id is requested
 
     @Override
     public LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException{

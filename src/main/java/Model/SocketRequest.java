@@ -14,7 +14,7 @@ public class SocketRequest implements Serializable {
     private String palletID;
     private Date rentalStart;
 
-    // it instantiates the socket request with three parameters one action, one object and one string.
+    // it instantiates the socket request with five parameters one Action, one Object and three Strings
 
     public SocketRequest(ACTION action, Object obj, String locationID, String companyID, String palletID){
         this.action=action;
@@ -25,6 +25,7 @@ public class SocketRequest implements Serializable {
     }
 
     // the class action which has a list of specific actions to be handled on specific objects
+
     public enum ACTION
     {
         REGISTER_COMPANY,

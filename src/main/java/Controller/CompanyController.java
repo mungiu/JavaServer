@@ -10,7 +10,7 @@ public class CompanyController implements ICompanyController {
     private String schemaName;
     private Connection connection;
 
-    // it instantiates the company controller with a private instance from the database and connection to the database.
+      // it instantiates the company controller with a private instance from the database and connection to the database.
 
     public CompanyController(Connection dbConnection){
         this.connection = dbConnection;
@@ -100,6 +100,8 @@ public class CompanyController implements ICompanyController {
         statement.executeUpdate();
         statement.close();
     }
+
+    // this method removes a company from the application database when a specific company id is requested
 
     public void removeCompany(String companyID) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".company where companyid = '"+companyID+"'");

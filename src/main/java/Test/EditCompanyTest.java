@@ -7,7 +7,7 @@ import Controller.CompanyController;
 import Model.Company;
 import Utils.Database;
 
-public class EditeCompanyTest {
+public class EditCompanyTest {
 	CompanyController cc = new CompanyController(Database.getConnection());
 
 //	@BeforeClass
