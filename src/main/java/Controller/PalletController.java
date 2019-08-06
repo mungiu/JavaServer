@@ -19,10 +19,6 @@ public class PalletController implements IPalletController {
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
-    
-
-
-    // it is used by other methods to populate the temporary pallet table in the database with the resulted pallets from these methods.
 
     // it is used by other methods to populate the temporary pallet table in the database with the resulted pallets from these methods.
 

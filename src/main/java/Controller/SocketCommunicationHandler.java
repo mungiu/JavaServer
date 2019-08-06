@@ -36,7 +36,7 @@ public class SocketCommunicationHandler implements Runnable {
      * Initializes input and output stream for the socket communication and waits for the request.
      * When request arrives, identifies an action and perform necessary steps to create and send a response.
      *
-     * Action is defined in the ACTION field contained in the request. Each action has it's own separate
+     * Action is defined in the ACTION field contained in the request. Each action has its own separate
      * set of commands that will be executed in order to send a response back.
      */
     @Override
@@ -67,7 +67,6 @@ public class SocketCommunicationHandler implements Runnable {
                     try {
 						iCompanyController.registerCompany(company);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
                     send(SUCCESS);

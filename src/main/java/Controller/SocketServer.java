@@ -16,8 +16,8 @@ public class SocketServer {
     }
 
     /**
-     * Starts a socket server and wait for clients to connect.
-     * When a new client connects, starts a new thread to handle the communication
+     * Starts a socket server and waits for the clients to connect.
+     * When a new client connects, server starts a new thread to handle the communication
      */
     public void startServer() throws IOException {
         System.out.println("Administrator connection listening on port " + PORT);

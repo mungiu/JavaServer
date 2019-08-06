@@ -6,8 +6,8 @@ public class Company {
     private int phone;
     private String email;
     private LocationList locationList = new LocationList();
-    // it returns the value of the private companyID variable.
 
+    // it returns the value of the private companyID variable.
 
     public String getCompanyID() {
         return companyID;
@@ -55,9 +55,13 @@ public class Company {
         this.email = email;
     }
 
+    // it returns the value of the private LocationList variable
+
     public LocationList getLocationList() {
         return locationList;
     }
+
+    // it edits the LocationList to the new one in the parameter
 
     public void setLocationList(LocationList locationList) {
         this.locationList = locationList;

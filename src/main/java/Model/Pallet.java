@@ -12,7 +12,6 @@ public class Pallet {
     private Date arrivalDate;
     private PGInterval daysStored;
     
-    
 
     // it returns the value of the private palletID variable.
 
@@ -32,7 +31,7 @@ public class Pallet {
         return palletHeight;
     }
 
-    // it edits the pallet height to the new one in the parameter.
+    // it edits the palletHeight to the new one in the parameter.
 
     public void setPalletHeight(double palletHeight) {
         this.palletHeight = palletHeight;
@@ -44,7 +43,7 @@ public class Pallet {
         return palletArea;
     }
 
-    // it edits the pallet area to the new one in the parameter
+    // it edits the palletArea to the new one in the parameter
 
     public void setPalletArea(double palletArea) {
         this.palletArea = palletArea;
@@ -56,7 +55,7 @@ public class Pallet {
         return arrivalDate;
     }
 
-    // it edits the arrival date of the pallet to the new one in the parameter.
+    // it edits the arrivalDate of the pallet to the new one in the parameter.
 
     public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
