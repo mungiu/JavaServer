@@ -3,11 +3,9 @@ package Model;
 import java.util.ArrayList;
 
 public class PalletList {
-    public ArrayList<Pallet> getPalletArrayList() {
-        return palletArrayList;
+    public ArrayList<Pallet> getPallets() {
+        return pallets;
     }
 
-    private ArrayList<Pallet> palletArrayList = new ArrayList<Pallet>();
-
-    public  int size() {return palletArrayList.size();}
+    private ArrayList<Pallet> pallets = new ArrayList<>();
 }

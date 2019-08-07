@@ -24,8 +24,7 @@ public class SocketCommunicationHandler implements Runnable {
     private final String SUCCESS = "success";
 
     // it instantiates the socket communication handler
-
-    public SocketCommunicationHandler(Socket socket) {
+    SocketCommunicationHandler(Socket socket) {
         this.socket = socket;
         this.iCompanyController = new CompanyController(Database.getConnection());
         this.iLocationController = new LocationController(Database.getConnection());
@@ -35,7 +34,7 @@ public class SocketCommunicationHandler implements Runnable {
     /**
      * Initializes input and output stream for the socket communication and waits for the request.
      * When request arrives, identifies an action and perform necessary steps to create and send a response.
-     *
+     * <p>
      * Action is defined in the ACTION field contained in the request. Each action has it's own separate
      * set of commands that will be executed in order to send a response back.
      */
@@ -50,7 +49,7 @@ public class SocketCommunicationHandler implements Runnable {
             System.out.println(json);
             request = new SocketRequest(
                     jsonObject.getEnum(SocketRequest.ACTION.class, "Action"),
-                    jsonObject.get("Obj").equals(null)  ? null : jsonObject.getJSONObject("Obj"),
+                    jsonObject.get("Obj").equals(null) ? null : jsonObject.getJSONObject("Obj"),
                     jsonObject.get("LocationID").equals(null) ? null : jsonObject.getString("LocationID"),
                     jsonObject.get("CompanyID").equals(null) ? null : jsonObject.getString("CompanyID"),
                     jsonObject.get("PalletID").equals(null) ? null : jsonObject.getString("PalletID")
@@ -65,18 +64,17 @@ public class SocketCommunicationHandler implements Runnable {
                 try {
                     Company company = new ObjectMapper().readValue(request.getObj().toString(), Company.class);
                     try {
-						iCompanyController.registerCompany(company);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                        iCompanyController.registerCompany(company);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     send(SUCCESS);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
 
-            case   ASSIGN_LOCATION_TO_COMPANY:
+            case ASSIGN_LOCATION_TO_COMPANY:
                 try {
                     iLocationController.assignLocationToCompany(request.getLocationID(), request.getCompanyID(), Date.valueOf(LocalDate.now()));
                     send(SUCCESS);
@@ -87,7 +85,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_LOCATION_FROM_CURRENT_COMPANY:
                 try {
-                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID(),request.getCompanyID());
+                    iLocationController.removeLocationFromCurrentCompany(request.getLocationID(), request.getCompanyID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -108,7 +106,6 @@ public class SocketCommunicationHandler implements Runnable {
                 try {
                     CompanyList clientList = iCompanyController.getCompanyList();
                     System.out.println(clientList.toString());
-//                  JSONObject response = new JSONObject(orders);
                     String response = new ObjectMapper().writeValueAsString(clientList);
                     send(response);
                 } catch (SQLException | IOException e) {
@@ -128,8 +125,8 @@ public class SocketCommunicationHandler implements Runnable {
 
             case STORE_PALLET:
                 try {
-                    Pallet pallet= new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
-                    iPalletController.StorePallet(pallet,request.getLocationID(),request.getCompanyID());
+                    Pallet pallet = new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
+                    iPalletController.StorePallet(pallet);
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -138,7 +135,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case REMOVE_PALLET:
                 try {
-                    iPalletController.removePallet(request.getPalletID(),request.getLocationID());
+                    iPalletController.removePallet(request.getPalletID(), request.getCompanyID());
                     send(SUCCESS);
                 } catch (IOException | SQLException e) {
                     e.printStackTrace();
@@ -147,7 +144,7 @@ public class SocketCommunicationHandler implements Runnable {
 
             case GET_PALLET_BYID:
                 try {
-                    Pallet pallet= iPalletController.getPalletByID(request.getPalletID(),request.getLocationID());
+                    Pallet pallet = iPalletController.getPalletByID(request.getPalletID(), request.getCompanyID());
                     String response = new ObjectMapper().writeValueAsString(pallet);
                     send(response);
                 } catch (IOException | SQLException e) {
@@ -178,15 +175,29 @@ public class SocketCommunicationHandler implements Runnable {
                 break;
 
             case GET_LOCATIONS_OF_CURRENT_COMPANY:
-                try{
+                try {
                     LocationList locationList = iLocationController.getLocationsOfCurrentCompany(request.getCompanyID());
                     System.out.println(locationList.toString());
                     String response = new ObjectMapper().writeValueAsString(locationList);
                     send(response);
 
-                }catch(SQLException | IOException e){
+                } catch (SQLException | IOException e) {
                     e.printStackTrace();
                 }
+                break;
+            case EDIT_PALLET:
+                try {
+                    Pallet pallet = new ObjectMapper().readValue(request.getObj().toString(), Pallet.class);
+                    try {
+                        iPalletController.updatePallet(pallet);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    send(SUCCESS);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 

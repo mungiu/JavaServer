@@ -7,7 +7,9 @@ public class LocationList {
         return Locations;
     }
 
-    private ArrayList<Location> Locations = new ArrayList<Location>();
+    private ArrayList<Location> Locations = new ArrayList<>();
 
-    public int size() {return Locations.size();}
+    public int size() {
+        return Locations.size();
+    }
 }

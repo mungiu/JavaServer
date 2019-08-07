@@ -10,7 +10,6 @@ public class SocketServer {
 
 
     // it instantiates the socket server object.
-
     public SocketServer() throws IOException {
         serverSocket = new ServerSocket(PORT);
     }

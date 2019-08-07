@@ -15,13 +15,13 @@ import java.sql.SQLException;
 
 public class getPalletByIDTest {
 
-    private PalletController pc = new PalletController(Database.getConnection());
+    private PalletController palletController = new PalletController(Database.getConnection());
     private Pallet pallet = new Pallet();
     private Company com = new Company();
     private Location loc = new Location();
 
     @Before
-    public void init(){
+    public void init() {
         pallet.setPalletID("pal1111");
         com.setCompanyID("com1234");
         loc.setLocationID("locA");
@@ -30,21 +30,21 @@ public class getPalletByIDTest {
         pallet.setArrivalDate(Date.valueOf("2019-10-01"));
 
         try {
-            pc.StorePallet(pallet,com.getCompanyID(),loc.getLocationID());
+            palletController.StorePallet(pallet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-	@Test
+    @Test
     public void getPalletByID() throws SQLException {
-        Assert.assertEquals("pal1111", pc.getPalletByID(pallet.getPalletID(), com.getCompanyID()).getPalletID());
+        Assert.assertEquals("pal1111", palletController.getPalletByID(pallet.getPalletID(), com.getCompanyID()).getPalletID());
     }
 
     @After
-    public void after(){
+    public void after() {
         try {
-            pc.removePallet(pallet.getPalletID(), com.getCompanyID());
+            palletController.removePallet(pallet.getPalletID(), com.getCompanyID());
         } catch (SQLException e) {
             e.printStackTrace();
         }

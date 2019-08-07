@@ -5,20 +5,13 @@ import java.sql.DriverManager;
 
 public class Database {
     private static Connection connection;
-
-//    private static int dbPort = 5432;
-//    public static final String DB_NAME = "WME";
-//    private static String dbAddress = "localhost";
-//    private static String dbUsername = "postgres";
-//    private static String dbPassword = "Jwan0090j";
-//    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":" + dbPort + "/" + DB_NAME;
-
-    public static final String DB_NAME = "postgres";
+    private static final String DB_NAME = "postgres";
     private static String dbAddress = "localhost";
     private static int dbPort = 5433;
     private static String dbUsername = "postgres";
     private static String dbPassword = "1111";
-    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":"+dbPort+"/" + DB_NAME;
+    private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":" + dbPort + "/" + DB_NAME;
+
     /**
      * Lazy instantiation of the database connection
      *
@@ -42,8 +35,7 @@ public class Database {
         } catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC Driver not found");
             e.printStackTrace();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

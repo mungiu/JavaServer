@@ -15,7 +15,6 @@ public class SocketRequest implements Serializable {
     private Date rentalStart;
 
     // it instantiates the socket request with three parameters one action, one object and one string.
-
     public SocketRequest(ACTION action, Object obj, String locationID, String companyID, String palletID){
         this.action=action;
         this.obj=obj;

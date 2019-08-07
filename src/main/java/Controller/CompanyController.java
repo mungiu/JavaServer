@@ -11,15 +11,13 @@ public class CompanyController implements ICompanyController {
     private Connection connection;
 
     // it instantiates the company controller with a private instance from the database and connection to the database.
-
     public CompanyController(Connection dbConnection){
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
 
     
-      // it returns a specific company details when a specific company id is requested
-    
+    // it returns a specific company details when a specific company id is requested
     public Company getCompanyByID(String companyID) throws SQLException{
     	
     	   Company company = new Company();  
@@ -36,11 +34,9 @@ public class CompanyController implements ICompanyController {
            }
 
            return company;
-       }
+    }
 
-
-       // it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
-
+    // it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
     private Company populateCompany(ResultSet resultSet) throws  SQLException
     {
         Company company = new Company();
@@ -55,7 +51,6 @@ public class CompanyController implements ICompanyController {
     
     
     // this method to register a new company in the application database
-
     public void registerCompany(Company company) throws SQLException {
     	
 
@@ -73,7 +68,6 @@ public class CompanyController implements ICompanyController {
 
 
     // this method returns a list of the registered companies in the application database
-
     public CompanyList getCompanyList() throws SQLException {
         CompanyList companyList = new CompanyList();
         Statement statement = connection.createStatement();
@@ -88,15 +82,10 @@ public class CompanyController implements ICompanyController {
     }
 
     // this method is used when editing company details in the application database
-    
     public void editCompany(Company company) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(
         		"update \"" + schemaName + "\".company set companyID = '"+company.getCompanyID() +"',name ='"+company.getName()+"',phone ='"+company.getPhone()
         		+"',Email ='"+company.getEmail ()+ "' where companyid = '"+company.getCompanyID()+"'");
-//        statement.setString(1, company.getCompanyID());
-//        statement.setString(2, company.getName());
-//        statement.setInt(3, company.getPhone());
-//        statement.setString(4, company.getEmail());
         statement.executeUpdate();
         statement.close();
     }
