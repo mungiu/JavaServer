@@ -23,12 +23,15 @@ public class SocketCommunicationHandler implements Runnable {
     private SocketRequest request;
     private final String SUCCESS = "success";
 
-    // it instantiates the socket communication handler
+    /**
+     * Method for initializing the socket communication handler by inputting a socket
+     * @param socket
+     */
     SocketCommunicationHandler(Socket socket) {
         this.socket = socket;
-        this.iCompanyController = new CompanyController(Database.getConnection());
-        this.iLocationController = new LocationController(Database.getConnection());
-        this.iPalletController = new PalletController(Database.getConnection());
+        this.iCompanyController = new CompanyController(Database.getINSTANCE().getConnection());
+        this.iLocationController = new LocationController(Database.getINSTANCE().getConnection());
+        this.iPalletController = new PalletController(Database.getINSTANCE().getConnection());
     }
 
     /**

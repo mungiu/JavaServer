@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 public class AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest {
-    private LocationController locationController = new LocationController(Database.getConnection());
+    private LocationController locationController = new LocationController(Database.getINSTANCE().getConnection());
 
     @Test
     public void assignLocationToCompanyAndRemoveLocationFromCompanyTest() throws SQLException {

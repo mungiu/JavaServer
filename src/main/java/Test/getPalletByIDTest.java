@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class getPalletByIDTest {
 
-    private PalletController palletController = new PalletController(Database.getConnection());
+    private PalletController palletController = new PalletController(Database.getINSTANCE().getConnection());
     private Pallet pallet = new Pallet();
     private Company com = new Company();
     private Location loc = new Location();

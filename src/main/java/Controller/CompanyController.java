@@ -10,14 +10,22 @@ public class CompanyController implements ICompanyController {
     private String schemaName;
     private Connection connection;
 
-    // it instantiates the company controller with a private instance from the database and connection to the database.
+    /**
+     * Method for initializing company controller with a connection parameter
+     * @param dbConnection
+     */
     public CompanyController(Connection dbConnection){
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
 
-    
-    // it returns a specific company details when a specific company id is requested
+
+    /**
+     * Method for getting a company by inputting its company id
+     * @param companyID
+     * @return
+     * @throws SQLException
+     */
     public Company getCompanyByID(String companyID) throws SQLException{
     	
     	   Company company = new Company();  
@@ -36,7 +44,12 @@ public class CompanyController implements ICompanyController {
            return company;
     }
 
-    // it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
+    /**
+     * Method for populating retrieved companies so that it will be ready to show for clients
+     * @param resultSet
+     * @return
+     * @throws SQLException
+     */
     private Company populateCompany(ResultSet resultSet) throws  SQLException
     {
         Company company = new Company();
@@ -48,9 +61,13 @@ public class CompanyController implements ICompanyController {
 
         return company;
     }
-    
-    
-    // this method to register a new company in the application database
+
+
+    /**
+     * Method for registering a company to the database
+     * @param company
+     * @throws SQLException
+     */
     public void registerCompany(Company company) throws SQLException {
     	
 
@@ -66,8 +83,11 @@ public class CompanyController implements ICompanyController {
     }
 
 
-
-    // this method returns a list of the registered companies in the application database
+    /**
+     * Method for getting all companies from the database
+     * @return
+     * @throws SQLException
+     */
     public CompanyList getCompanyList() throws SQLException {
         CompanyList companyList = new CompanyList();
         Statement statement = connection.createStatement();
@@ -81,7 +101,11 @@ public class CompanyController implements ICompanyController {
         return companyList;
     }
 
-    // this method is used when editing company details in the application database
+    /**
+     * Method for managing company details
+     * @param company
+     * @throws SQLException
+     */
     public void editCompany(Company company) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(
         		"update \"" + schemaName + "\".company set companyID = '"+company.getCompanyID() +"',name ='"+company.getName()+"',phone ='"+company.getPhone()
@@ -90,6 +114,11 @@ public class CompanyController implements ICompanyController {
         statement.close();
     }
 
+    /**
+     * Method for removing a company from the database
+     * @param companyID
+     * @throws SQLException
+     */
     public void removeCompany(String companyID) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".company where companyid = '"+companyID+"'");
         statement.executeUpdate();

@@ -10,13 +10,21 @@ public class PalletController implements IPalletController {
     private Connection connection;
     private String schemaName;
 
-    // it instantiates the pallet Controller with a private instance of the database and connection to the database.
+    /**
+     * Method for initializing pallet controller by inputting a connection
+     * @param dbConnection
+     */
     public PalletController(Connection dbConnection) {
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
 
-    // it is used by other methods to populate the temporary pallet table in the database with the resulted pallets from these methods.
+    /**
+     * Method for populating retrieve pallet data so that it is ready to show for client side
+     * @param resultSet
+     * @return
+     * @throws SQLException
+     */
     private Pallet populatePallet(ResultSet resultSet) throws SQLException {
         Pallet pallet = new Pallet();
         pallet.setPalletID(resultSet.getString(1));
@@ -30,7 +38,13 @@ public class PalletController implements IPalletController {
         return pallet;
     }
 
-    // it returns a specific pallet details when the pallet id and company id are requested.
+    /**
+     * Method for getting a pallet by inputting pallet id
+     * @param palletID
+     * @param companyID
+     * @return
+     * @throws SQLException
+     */
     @Override
     public Pallet getPalletByID(String palletID, String companyID) throws SQLException {
         Pallet p = new Pallet();
@@ -46,7 +60,12 @@ public class PalletController implements IPalletController {
 
     }
 
-    // it removes the assigned pallet for a specific company
+    /**
+     * Method for removing a pallet from a company
+     * @param palletID
+     * @param companyID
+     * @throws SQLException
+     */
     @Override
     public void removePallet(String palletID, String companyID) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName +
@@ -56,7 +75,11 @@ public class PalletController implements IPalletController {
         statement.close();
     }
 
-    // it assign a specific pallet for the renting company in a specific location.
+    /**
+     * Method for storing a pallet into the databse
+     * @param pallet
+     * @throws SQLException
+     */
     @Override
     public void StorePallet(Pallet pallet) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".pallet (palletID, companyid, locationid, palletheight, palletarea, arrivaldate) values (?,?,?,?,?,?)");
@@ -70,7 +93,11 @@ public class PalletController implements IPalletController {
         statement.close();
     }
 
-    // it returns the list of pallets that are assigned in the application database.
+    /**
+     * Method for getting all pallets
+     * @return
+     * @throws SQLException
+     */
     @Override
     public PalletList getPalletList() throws SQLException {
 
@@ -85,6 +112,11 @@ public class PalletController implements IPalletController {
         return palletList;
     }
 
+    /**
+     * Method for updating a pallet's information
+     * @param pallet
+     * @throws SQLException
+     */
     @Override
     public void updatePallet(Pallet pallet) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(

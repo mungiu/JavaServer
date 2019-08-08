@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.sql.SQLException;
 
 public class getLocationByIDTest {
-    private LocationController locationController = new LocationController(Database.getConnection());
+    private LocationController locationController = new LocationController(Database.getINSTANCE().getConnection());
 
     @Test
     public void getLocationsByIdTest() throws SQLException {

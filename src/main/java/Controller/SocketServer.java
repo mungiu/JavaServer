@@ -9,7 +9,10 @@ public class SocketServer {
     private ServerSocket serverSocket;
 
 
-    // it instantiates the socket server object.
+    /**
+     * Method for initializing the socket server
+     * @throws IOException
+     */
     public SocketServer() throws IOException {
         serverSocket = new ServerSocket(PORT);
     }

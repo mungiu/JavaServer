@@ -14,22 +14,33 @@ public class LocationController implements ILocationController {
     private SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
 
-    // it instantiates the location controller with a private instance of the database and connection to database.
-
+    /**
+     * Method for initializing the location controller with a connection parameter
+     * @param dbConnection
+     */
     public LocationController(Connection dbConnection) {
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
 
-    // it is used by other methods to populate the temporary location table in the database with the resulted locations from those methods.
-
+    /**
+     * Method for populating locations only with location id
+     * @param resultSet
+     * @return
+     * @throws SQLException
+     */
     private Location populateLocation(ResultSet resultSet) throws SQLException {
         Location location = new Location();
         location.setLocationID(resultSet.getString(1));
         return location;
     }
 
-
+    /**
+     * Method for populating rented locations with company id, location id and rental start date
+     * @param resultSet
+     * @return
+     * @throws SQLException
+     */
     private Location populateRentedLocation(ResultSet resultSet) throws SQLException {
         Location location = new Location();
         Company company = new Company();
@@ -40,7 +51,13 @@ public class LocationController implements ILocationController {
 
     }
 
-    // it assigns a specific location for a specific company in the application database.
+    /**
+     * Method for assigning a new location to a company
+     * @param locationID
+     * @param companyID
+     * @param rentalStart
+     * @throws SQLException
+     */
     @Override
     public void assignLocationToCompany(String locationID, String companyID, Date rentalStart) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".rentedlocation (companyID, locationid, rentalstart) values (?,?,?)");
@@ -51,8 +68,12 @@ public class LocationController implements ILocationController {
         statement.close();
     }
 
-    // it removes an assigned location for a specific company.
-
+    /**
+     * Method for removing a location from the current viewing company
+     * @param locationID
+     * @param companyID
+     * @throws SQLException
+     */
     @Override
     public void removeLocationFromCurrentCompany(String locationID, String companyID) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = " + "'" + locationID + "'");
@@ -60,8 +81,12 @@ public class LocationController implements ILocationController {
         statement.close();
     }
 
-    // it returns the location details when a specific location id is requested.
-
+    /**
+     * Method for getting a location by inputting location id
+     * @param locationID
+     * @return
+     * @throws SQLException
+     */
     @Override
     public Location getLocationByID(String locationID) throws SQLException {
         Location location = new Location();
@@ -76,7 +101,11 @@ public class LocationController implements ILocationController {
         return location;
     }
 
-    // it returns a list of available locations which are not rented yet.
+    /**
+     * Method for getting all locations that have not been rented by any companies yet
+     * @return
+     * @throws SQLException
+     */
     @Override
     public LocationList getAvailableLocations() throws SQLException {
         LocationList locationList = new LocationList();
@@ -91,6 +120,12 @@ public class LocationController implements ILocationController {
         return locationList;
     }
 
+    /**
+     * Method for getting all locations from the current viewing company
+     * @param companyID
+     * @return
+     * @throws SQLException
+     */
     @Override
     public LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException {
         LocationList locationList = new LocationList();

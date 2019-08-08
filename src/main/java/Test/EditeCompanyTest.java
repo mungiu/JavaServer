@@ -8,7 +8,7 @@ import Model.Company;
 import Utils.Database;
 
 public class EditeCompanyTest {
-    private CompanyController companyController = new CompanyController(Database.getConnection());
+    private CompanyController companyController = new CompanyController(Database.getINSTANCE().getConnection());
 
     @Test
     public void test() throws Exception {
