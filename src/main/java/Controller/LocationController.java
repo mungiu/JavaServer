@@ -81,7 +81,8 @@ public class LocationController implements ILocationController {
     public LocationList getAvailableLocations() throws SQLException {
         LocationList locationList = new LocationList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".availableLocations order by availablelocations asc");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName +
+                "\".availableLocations order by availablelocations asc");
 
         while (resultSet.next()) {
             locationList.getLocations().add(populateLocation(resultSet));
@@ -94,7 +95,8 @@ public class LocationController implements ILocationController {
     public LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException {
         LocationList locationList = new LocationList();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName + "\".rentedlocation where companyid = '" + companyID + "' order by locationid asc");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM \"" + schemaName +
+                "\".rentedlocation where companyid = '" + companyID + "' order by locationid asc");
 
         while (resultSet.next()) {
             locationList.getLocations().add(populateRentedLocation(resultSet));
