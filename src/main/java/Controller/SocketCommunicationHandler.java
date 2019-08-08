@@ -26,9 +26,9 @@ public class SocketCommunicationHandler implements Runnable {
     // it instantiates the socket communication handler
     SocketCommunicationHandler(Socket socket) {
         this.socket = socket;
-        this.iCompanyController = new CompanyController(Database.getConnection());
-        this.iLocationController = new LocationController(Database.getConnection());
-        this.iPalletController = new PalletController(Database.getConnection());
+        this.iCompanyController = new CompanyController(Database.getINSTANCE().getConnection());
+        this.iLocationController = new LocationController(Database.getINSTANCE().getConnection());
+        this.iPalletController = new PalletController(Database.getINSTANCE().getConnection());
     }
 
     /**

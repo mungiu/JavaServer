@@ -10,7 +10,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 public class StorePalletAndRemovePalletTest {
-	  private PalletController palletController = new PalletController(Database.getConnection());
+	  private PalletController palletController = new PalletController(Database.getINSTANCE().getConnection());
 	    @Test
 	    public void StorePaller() throws SQLException{
 	       Pallet pallet = new Pallet();

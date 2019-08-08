@@ -2,6 +2,8 @@ package Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Database {
     private static Connection connection;
@@ -11,13 +13,28 @@ public class Database {
     private static String dbUsername = "postgres";
     private static String dbPassword = "1111";
     private static String postgresSQLUrl = "jdbc:postgresql://" + dbAddress + ":" + dbPort + "/" + DB_NAME;
+    private static Database INSTANCE;
+    private static Lock lock = new ReentrantLock();
+
+    private Database() {
+    }
+
+    public static Database getINSTANCE() {
+        if (INSTANCE == null) {
+            synchronized (lock) {
+                if (INSTANCE == null)
+                    INSTANCE = new Database();
+            }
+        }
+        return INSTANCE;
+    }
 
     /**
      * Lazy instantiation of the database connection
      *
      * @return connection
      */
-    public static Connection getConnection() {
+    public Connection getConnection() {
         if (connection != null)
             return connection;
         return getNewConnection();

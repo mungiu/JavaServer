@@ -12,7 +12,7 @@ import java.util.List;
 
 public class getCompanyListTest {
 
-    private CompanyController companyController = new CompanyController(Database.getConnection());
+    private CompanyController companyController = new CompanyController(Database.getINSTANCE().getConnection());
 
     @Test
     public void getCompanyList() throws SQLException {

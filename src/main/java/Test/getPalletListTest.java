@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class getPalletListTest {
-    private PalletController palletController = new PalletController(Database.getConnection());
+    private PalletController palletController = new PalletController(Database.getINSTANCE().getConnection());
 
     @Test
     public void getPalletList() throws SQLException {
