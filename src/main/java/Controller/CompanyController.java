@@ -52,14 +52,14 @@ public class CompanyController implements ICompanyController {
     
     // this method to register a new company in the application database
     public void registerCompany(Company company) throws SQLException {
-    	
-
+        connection.setAutoCommit(false);
     	PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
         statement.setString(1, company.getCompanyID());
         statement.setString(2, company.getName());
         statement.setInt(3, company.getPhone());
         statement.setString(4, company.getEmail());
     	statement.executeUpdate();
+    	connection.commit();
     	statement.close();
 
 
@@ -83,16 +83,20 @@ public class CompanyController implements ICompanyController {
 
     // this method is used when editing company details in the application database
     public void editCompany(Company company) throws SQLException {
+        connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement(
         		"update \"" + schemaName + "\".company set companyID = '"+company.getCompanyID() +"',name ='"+company.getName()+"',phone ='"+company.getPhone()
         		+"',Email ='"+company.getEmail ()+ "' where companyid = '"+company.getCompanyID()+"'");
         statement.executeUpdate();
+        connection.commit();
         statement.close();
     }
 
     public void removeCompany(String companyID) throws SQLException{
+        connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".company where companyid = '"+companyID+"'");
         statement.executeUpdate();
+        connection.commit();
         statement.close();
     }
 }

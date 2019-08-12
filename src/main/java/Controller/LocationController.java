@@ -43,11 +43,13 @@ public class LocationController implements ILocationController {
     // it assigns a specific location for a specific company in the application database.
     @Override
     public void assignLocationToCompany(String locationID, String companyID, Date rentalStart) throws SQLException {
+        connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".rentedlocation (companyID, locationid, rentalstart) values (?,?,?)");
         statement.setString(1, companyID);
         statement.setString(2, locationID);
         statement.setDate(3, rentalStart);
         statement.executeUpdate();
+        connection.commit();
         statement.close();
     }
 
@@ -55,8 +57,10 @@ public class LocationController implements ILocationController {
 
     @Override
     public void removeLocationFromCurrentCompany(String locationID, String companyID) throws SQLException {
+        connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = " + "'" + locationID + "'");
         statement.executeUpdate();
+        connection.commit();
         statement.close();
     }
 

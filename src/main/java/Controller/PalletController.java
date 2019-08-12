@@ -49,16 +49,19 @@ public class PalletController implements IPalletController {
     // it removes the assigned pallet for a specific company
     @Override
     public void removePallet(String palletID, String companyID) throws SQLException {
+        connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName +
                 "\".pallet where palletid = '" + palletID + "'" +
                 " and companyid = '" + companyID + "'");
         statement.executeUpdate();
+        connection.commit();
         statement.close();
     }
 
     // it assign a specific pallet for the renting company in a specific location.
     @Override
     public void StorePallet(Pallet pallet) throws SQLException {
+        connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".pallet (palletID, companyid, locationid, palletheight, palletarea, arrivaldate) values (?,?,?,?,?,?)");
         statement.setString(1, pallet.getPalletID());
         statement.setString(2, pallet.getCompanyID());
@@ -67,6 +70,7 @@ public class PalletController implements IPalletController {
         statement.setDouble(5, pallet.getPalletArea());
         statement.setDate(6, pallet.getArrivalDate());
         statement.executeUpdate();
+        connection.commit();
         statement.close();
     }
 
