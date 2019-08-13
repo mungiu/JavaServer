@@ -58,7 +58,11 @@ public class CompanyController implements ICompanyController {
         statement.setString(2, company.getName());
         statement.setInt(3, company.getPhone());
         statement.setString(4, company.getEmail());
-    	statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     	connection.commit();
     	statement.close();
 
@@ -87,7 +91,11 @@ public class CompanyController implements ICompanyController {
         PreparedStatement statement = connection.prepareStatement(
         		"update \"" + schemaName + "\".company set companyID = '"+company.getCompanyID() +"',name ='"+company.getName()+"',phone ='"+company.getPhone()
         		+"',Email ='"+company.getEmail ()+ "' where companyid = '"+company.getCompanyID()+"'");
-        statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         connection.commit();
         statement.close();
     }
@@ -95,7 +103,11 @@ public class CompanyController implements ICompanyController {
     public void removeCompany(String companyID) throws SQLException{
         connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".company where companyid = '"+companyID+"'");
-        statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         connection.commit();
         statement.close();
     }

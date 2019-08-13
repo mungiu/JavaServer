@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f6ff6644-468c-4570-bf48-e4e08608695a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CompanyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,17 +96,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StorePalletAndRemovePalletTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest and 10 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.StorePalletAndRemovePalletTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="Test.AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" />
+        <pattern testClass="Test.EditeCompanyTest" />
+        <pattern testClass="Test.getAvailableLoationsTest" />
+        <pattern testClass="Test.getCompanyByIDTest" />
+        <pattern testClass="Test.getCompanyListTest" />
+        <pattern testClass="Test.getLocationByIDTest" />
+        <pattern testClass="Test.getLocationOfCurrentCompanyTest" />
+        <pattern testClass="Test.getPalletByIDTest" />
+        <pattern testClass="Test.getPalletListTest" />
+        <pattern testClass="Test.RegisterAndRemoveCompanyTest" />
+        <pattern testClass="Test.StorePalletAndRemovePalletTest" />
+      </patterns>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,10 +177,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest and 10 more" />
         <item itemvalue="JUnit.getPalletByIDTest" />
         <item itemvalue="JUnit.getLocationByIDTest" />
         <item itemvalue="JUnit.getLocationOfCurrentCompanyTest" />
-        <item itemvalue="JUnit.StorePalletAndRemovePalletTest" />
       </list>
     </recent_temporary>
   </component>
@@ -211,6 +218,7 @@
       <workItem from="1565611002390" duration="1279000" />
       <workItem from="1565615382799" duration="2695000" />
       <workItem from="1565680636143" duration="1501000" />
+      <workItem from="1565688012247" duration="1724000" />
     </task>
     <task id="LOCAL-00001" summary="Project completed, all tests passed. Fully working together with C# client side.">
       <created>1565177568684</created>

@@ -53,7 +53,11 @@ public class PalletController implements IPalletController {
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName +
                 "\".pallet where palletid = '" + palletID + "'" +
                 " and companyid = '" + companyID + "'");
-        statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         connection.commit();
         statement.close();
     }
@@ -69,7 +73,11 @@ public class PalletController implements IPalletController {
         statement.setDouble(4, pallet.getPalletHeight());
         statement.setDouble(5, pallet.getPalletArea());
         statement.setDate(6, pallet.getArrivalDate());
-        statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         connection.commit();
         statement.close();
     }
@@ -99,7 +107,11 @@ public class PalletController implements IPalletController {
                         ", ArrivalDate ='" + pallet.getArrivalDate() + "'" +
                         " where palletID = '" + pallet.getPalletID() + "'" +
                         " and companyID = '" + pallet.getCompanyID() + "'");
-        statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         statement.close();
     }
 }

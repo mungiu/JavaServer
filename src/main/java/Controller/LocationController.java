@@ -48,7 +48,11 @@ public class LocationController implements ILocationController {
         statement.setString(1, companyID);
         statement.setString(2, locationID);
         statement.setDate(3, rentalStart);
-        statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         connection.commit();
         statement.close();
     }
@@ -59,7 +63,11 @@ public class LocationController implements ILocationController {
     public void removeLocationFromCurrentCompany(String locationID, String companyID) throws SQLException {
         connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement("delete from \"" + schemaName + "\".rentedlocation where locationid = " + "'" + locationID + "'");
-        statement.executeUpdate();
+        try {
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         connection.commit();
         statement.close();
     }
