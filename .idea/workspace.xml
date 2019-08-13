@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6ff6644-468c-4570-bf48-e4e08608695a" name="Default Changelist" comment="Project completed, all tests passed. Fully working together with C# client side.">
-      <change afterPath="$PROJECT_DIR$/.idea/JavaServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f6ff6644-468c-4570-bf48-e4e08608695a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LocationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/PalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/getPalletByIDTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,9 +94,62 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest and 10 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StorePalletAndRemovePalletTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaServer" />
-      <option name="TEST_OBJECT" value="pattern" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.StorePalletAndRemovePalletTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="getLocationByIDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.getLocationByIDTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="getLocationOfCurrentCompanyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.getLocationOfCurrentCompanyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="getPalletByIDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.getPalletByIDTest" />
+      <option name="TEST_OBJECT" value="class" />
       <patterns>
         <pattern testClass="Test.AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" />
         <pattern testClass="Test.EditeCompanyTest" />
@@ -118,62 +167,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EditeCompanyTest and 9 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaServer" />
-      <option name="TEST_OBJECT" value="pattern" />
-      <patterns>
-        <pattern testClass="Test.EditeCompanyTest" />
-        <pattern testClass="Test.getAvailableLoationsTest" />
-        <pattern testClass="Test.getCompanyByIDTest" />
-        <pattern testClass="Test.getCompanyListTest" />
-        <pattern testClass="Test.getLocationByIDTest" />
-        <pattern testClass="Test.getLocationOfCurrentCompanyTest" />
-        <pattern testClass="Test.getPalletByIDTest" />
-        <pattern testClass="Test.getPalletListTest" />
-        <pattern testClass="Test.RegisterAndRemoveCompanyTest" />
-        <pattern testClass="Test.StorePalletAndRemovePalletTest" />
-      </patterns>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.UnitTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest and 10 more" />
-        <item itemvalue="JUnit.UnitTest" />
-        <item itemvalue="JUnit.EditeCompanyTest and 9 more" />
-        <item itemvalue="JUnit.AssignLocationToCompanyAndRemoveLocationFromCurrentCompanyTest" />
+        <item itemvalue="JUnit.getPalletByIDTest" />
+        <item itemvalue="JUnit.getLocationByIDTest" />
+        <item itemvalue="JUnit.getLocationOfCurrentCompanyTest" />
+        <item itemvalue="JUnit.StorePalletAndRemovePalletTest" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +209,8 @@
       <workItem from="1565252958236" duration="2817000" />
       <workItem from="1565271162103" duration="1309000" />
       <workItem from="1565611002390" duration="1279000" />
-      <workItem from="1565615382799" duration="2620000" />
+      <workItem from="1565615382799" duration="2695000" />
+      <workItem from="1565680636143" duration="1501000" />
     </task>
     <task id="LOCAL-00001" summary="Project completed, all tests passed. Fully working together with C# client side.">
       <created>1565177568684</created>
@@ -218,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565177568684</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="auto commit was set to &quot;false&quot; in places where items are: edited, delete or added">
+      <created>1565618534954</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1565618534954</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -238,7 +246,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -246,7 +256,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project completed, all tests passed. Fully working together with C# client side." />
-    <option name="LAST_COMMIT_MESSAGE" value="Project completed, all tests passed. Fully working together with C# client side." />
+    <MESSAGE value="auto commit was set to &quot;false&quot; in places where items are: edited, delete or added" />
+    <option name="LAST_COMMIT_MESSAGE" value="auto commit was set to &quot;false&quot; in places where items are: edited, delete or added" />
   </component>
   <component name="masterDetails">
     <states>

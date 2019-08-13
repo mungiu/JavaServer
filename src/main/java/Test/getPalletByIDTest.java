@@ -23,8 +23,8 @@ public class getPalletByIDTest {
     @Before
     public void init() {
         pallet.setPalletID("pal1111");
-        com.setCompanyID("com1234");
-        loc.setLocationID("locA");
+        pallet.setCompanyID("com1234");
+        pallet.setLocationID("locA");
         pallet.setPalletHeight(1.1);
         pallet.setPalletArea(10.10);
         pallet.setArrivalDate(Date.valueOf("2019-10-01"));
