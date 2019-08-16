@@ -9,5 +9,9 @@ public class CompanyList {
 
     private ArrayList<Company> Companies = new ArrayList<Company>();
 
+    /** it returns the number of the companyList
+     *
+     * @return
+     */
     public int size() {return Companies.size();}
 }

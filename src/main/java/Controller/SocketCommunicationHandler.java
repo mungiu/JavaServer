@@ -23,7 +23,10 @@ public class SocketCommunicationHandler implements Runnable {
     private SocketRequest request;
     private final String SUCCESS = "success";
 
-    // it instantiates the socket communication handler
+    /**it instantiates the socket communication handler
+     *
+     * @param socket
+     */
     SocketCommunicationHandler(Socket socket) {
         this.socket = socket;
         this.iCompanyController = new CompanyController(Database.getINSTANCE().getConnection());

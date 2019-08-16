@@ -9,6 +9,10 @@ public class LocationList {
 
     private ArrayList<Location> Locations = new ArrayList<>();
 
+    /**it returns the number of the locations list
+     *
+     * @return
+     */
     public int size() {
         return Locations.size();
     }

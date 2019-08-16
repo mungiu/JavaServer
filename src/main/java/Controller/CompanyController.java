@@ -10,14 +10,22 @@ public class CompanyController implements ICompanyController {
     private String schemaName;
     private Connection connection;
 
-    // it instantiates the company controller with a private instance from the database and connection to the database.
+    /** it instantiates the company controller with a private instance from the database and connection to the database.
+     *
+     * @param dbConnection
+     */
     public CompanyController(Connection dbConnection){
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
 
-    
-    // it returns a specific company details when a specific company id is requested
+
+    /** it returns a specific company details when a specific company id is requested
+     *
+     * @param companyID
+     * @return
+     * @throws SQLException
+     */
     public Company getCompanyByID(String companyID) throws SQLException{
     	
     	   Company company = new Company();  
@@ -36,7 +44,12 @@ public class CompanyController implements ICompanyController {
            return company;
     }
 
-    // it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
+    /**it is used by other methods inorder to populate the temporary company table in the database by the resulted companies from those methods
+     *
+     * @param resultSet
+     * @return
+     * @throws SQLException
+     */
     private Company populateCompany(ResultSet resultSet) throws  SQLException
     {
         Company company = new Company();
@@ -48,9 +61,13 @@ public class CompanyController implements ICompanyController {
 
         return company;
     }
-    
-    
-    // this method to register a new company in the application database
+
+
+    /** this method to register a new company in the application database
+     *
+     * @param company
+     * @throws SQLException
+     */
     public void registerCompany(Company company) throws SQLException {
         connection.setAutoCommit(false);
     	PreparedStatement statement = connection.prepareStatement("insert into \"" + schemaName + "\".company (companyID, name, phone, email) values (?,?,?,?)");
@@ -70,8 +87,11 @@ public class CompanyController implements ICompanyController {
     }
 
 
-
-    // this method returns a list of the registered companies in the application database
+    /** this method returns a list of the registered companies in the application database
+     *
+     * @return
+     * @throws SQLException
+     */
     public CompanyList getCompanyList() throws SQLException {
         CompanyList companyList = new CompanyList();
         Statement statement = connection.createStatement();

@@ -14,7 +14,14 @@ public class SocketRequest implements Serializable {
     private String palletID;
     private Date rentalStart;
 
-    // it instantiates the socket request with three parameters one action, one object and one string.
+    /**it instantiates the socket request with three parameters one action, one object and one string.
+     *
+     * @param action
+     * @param obj
+     * @param locationID
+     * @param companyID
+     * @param palletID
+     */
     public SocketRequest(ACTION action, Object obj, String locationID, String companyID, String palletID){
         this.action=action;
         this.obj=obj;
@@ -23,7 +30,9 @@ public class SocketRequest implements Serializable {
         this.palletID=palletID;
     }
 
-    // the class action which has a list of specific actions to be handled on specific objects
+    /**the class action which has a list of specific actions to be handled on specific objects
+     *
+     */
     public enum ACTION
     {
         REGISTER_COMPANY,

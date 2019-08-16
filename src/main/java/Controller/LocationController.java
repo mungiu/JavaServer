@@ -14,14 +14,22 @@ public class LocationController implements ILocationController {
     private SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
 
-    // it instantiates the location controller with a private instance of the database and connection to database.
+    /**it instantiates the location controller with a private instance of the database and connection to database.
+     *
+     * @param dbConnection
+     */
 
     public LocationController(Connection dbConnection) {
         this.connection = dbConnection;
         this.schemaName = "WME";
     }
 
-    // it is used by other methods to populate the temporary location table in the database with the resulted locations from those methods.
+    /** it is used by other methods to populate the temporary location table in the database with the resulted locations from those methods.
+     *
+     * @param resultSet
+     * @return
+     * @throws SQLException
+     */
 
     private Location populateLocation(ResultSet resultSet) throws SQLException {
         Location location = new Location();
@@ -40,7 +48,13 @@ public class LocationController implements ILocationController {
 
     }
 
-    // it assigns a specific location for a specific company in the application database.
+    /** it assigns a specific location for a specific company in the application database.
+     *
+     * @param locationID
+     * @param companyID
+     * @param rentalStart
+     * @throws SQLException
+     */
     @Override
     public void assignLocationToCompany(String locationID, String companyID, Date rentalStart) throws SQLException {
         connection.setAutoCommit(false);
@@ -57,7 +71,12 @@ public class LocationController implements ILocationController {
         statement.close();
     }
 
-    // it removes an assigned location for a specific company.
+    /**it removes an assigned location for a specific company.
+     *
+     * @param locationID
+     * @param companyID
+     * @throws SQLException
+     */
 
     @Override
     public void removeLocationFromCurrentCompany(String locationID, String companyID) throws SQLException {
@@ -72,7 +91,12 @@ public class LocationController implements ILocationController {
         statement.close();
     }
 
-    // it returns the location details when a specific location id is requested.
+    /**it returns the location details when a specific location id is requested.
+     *
+     * @param locationID
+     * @return
+     * @throws SQLException
+     */
 
     @Override
     public Location getLocationByID(String locationID) throws SQLException {
@@ -88,7 +112,11 @@ public class LocationController implements ILocationController {
         return location;
     }
 
-    // it returns a list of available locations which are not rented yet.
+    /**it returns a list of available locations which are not rented yet.
+     *
+     * @return
+     * @throws SQLException
+     */
     @Override
     public LocationList getAvailableLocations() throws SQLException {
         LocationList locationList = new LocationList();
@@ -102,6 +130,12 @@ public class LocationController implements ILocationController {
         return locationList;
     }
 
+    /**
+     * it gets the locations ao a current company by requesting company ID
+     * @param companyID
+     * @return
+     * @throws SQLException
+     */
     @Override
     public LocationList getLocationsOfCurrentCompany(String companyID) throws SQLException {
         LocationList locationList = new LocationList();
